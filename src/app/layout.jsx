@@ -1,6 +1,7 @@
 import BootstrapProvider from "@/helpers/providers/bootstrap-provider";
 import { Inter } from "next/font/google";
 import { Suspense } from "react";
+import "@/styles/index.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 

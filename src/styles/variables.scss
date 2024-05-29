@@ -1,0 +1,11 @@
+$color-blue1: #07C8F9;
+$color-blue2: #09A6F3;
+$color-blue3: #0A85ED;
+$color-blue4: #0C63E7;
+$color-blue5: #0D41E1;
+$vendors: ("", "-webkit-", "-moz-", "-ms-", "-o-");
+
+// Bootstrap variables
+$font-family-sans-serif: var(--inter);
+$primary: $color-blue5;
+$secondary: $color-blue1;
