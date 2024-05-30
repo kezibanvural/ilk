@@ -7,10 +7,10 @@ import "./style.scss"
 const MainNavbar = () => {
   return (
     <>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-transparent px-3 z-3">
-        <div class="container-fluid">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-transparent px-3 z-3">
+        <div className="container-fluid">
           <button
-            class="navbar-toggler border-0 shadow-none p-0"
+            className="navbar-toggler border-0 shadow-none p-0"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -22,25 +22,25 @@ const MainNavbar = () => {
               <Image src="/icons/actions/main-menu/State=Default.svg" width={45} height={45} />
              </span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <Link class="nav-link" aria-current="page" href="/">
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link className="nav-link" aria-current="page" href="/">
                   Home
                 </Link>
               </li>
-              <li class="nav-item">
-                <Link class="nav-link" href="/services">
+              <li className="nav-item">
+                <Link className="nav-link" href="/services">
                   Services
                 </Link>
               </li>
-              <li class="nav-item">
-                <Link class="nav-link" href="/app-details">
+              <li className="nav-item">
+                <Link className="nav-link" href="/app-details">
                   App Details
                 </Link>
               </li>
-              <li class="nav-item">
-                <Link class="nav-link" href="/contact">
+              <li className="nav-item">
+                <Link className="nav-link" href="/contact">
                   Contact
                 </Link>
               </li>
