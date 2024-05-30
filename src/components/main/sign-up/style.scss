@@ -1,10 +1,11 @@
 @use "../../../styles/variables.scss" as v;
 
-.signup-container{
+.main-container{
     background-color: #42A5F5;
     border: 2px solid #42A5F5 ;
     background-image: url("../../../../public/images/background/LooperBG.png");
     background-position: center;
+    background-repeat: no-repeat;
     width: 1440px;
     height: 80%;
     overflow: hidden;
@@ -43,17 +44,17 @@
                         font-size: 48px;
                         color: #42A5F5;
                         max-width: 382px;
-                        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+                        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
 
                         @media(max-width:768px){
                             max-width: 300px;
                             font-size: 36px;
-                            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+                            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
                         }
 
                         @media(max-width:576px){
                             font-size: 24px;
-                            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+                            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
                         }
 
                     }
@@ -74,6 +75,7 @@
                     small{
                         font-size: 16px;
                         color: #D8D8D8;
+                        width: 100%;
 
                         @media(max-width:768px){
                             font-size: 14px;

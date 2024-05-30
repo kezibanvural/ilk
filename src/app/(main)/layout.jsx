@@ -1,3 +1,4 @@
+import MainSection from "@/components/main/sign-up";
 import "@/styles/index.scss";
 
 export const metadata = {
@@ -7,8 +8,10 @@ export const metadata = {
 
 export default function MainLayout({ children }) {
   return (
-    <>
-      {children}
-    </>
+    <main className="container-fluid d-flex align-items-center justify-content-center vh-100">
+      <MainSection>
+        {children}
+      </MainSection>
+    </main>
   );
 }

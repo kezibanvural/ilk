@@ -1,6 +1,8 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import "./style.scss"
 
 const MainNavbar = () => {
   return (
@@ -8,7 +10,7 @@ const MainNavbar = () => {
       <nav class="navbar navbar-expand-lg navbar-dark bg-transparent px-3 z-3">
         <div class="container-fluid">
           <button
-            class="navbar-toggler"
+            class="navbar-toggler border-0 shadow-none p-0"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -16,12 +18,14 @@ const MainNavbar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+             <span>
+              <Image src="/icons/actions/main-menu/State=Default.svg" width={45} height={45} />
+             </span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <Link class="nav-link active" aria-current="page" href="/">
+                <Link class="nav-link" aria-current="page" href="/">
                   Home
                 </Link>
               </li>
@@ -42,9 +46,6 @@ const MainNavbar = () => {
               </li>
             </ul>
           </div>
-          <Link class="navbar-brand" href="/">
-            <Image src="/logos/Size=Full.svg" width={71} height={46} alt="logo"/>
-          </Link>
         </div>
       </nav>
     </>
