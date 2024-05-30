@@ -14,17 +14,20 @@ const MainSignUpForm = () => {
   return (
     <form 
       className="signup-form"
-      action={dispatch}>
+      action={dispatch}
+      noValidate
+      >
       <div className="row">
           <div className="col-12 d-flex align-items-center justify-content-center gap-3 flex-wrap flex-md-nowrap">
             <div className="input-group">
               <input
-                type="text"
+                type="email"
                 placeholder="Enter your email address"
                 className={`form-control rounded-5 ${
-                  state?.errors?.password ? "is-invalid" : ""
+                  state?.errors?.email ? "is-invalid" : ""
                 }`}
                 name="email"
+                id="email"
               />
               <div className="invalid-feedback">
                 {state?.errors?.email}
