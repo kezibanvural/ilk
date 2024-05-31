@@ -1,0 +1,89 @@
+@use "../../../../../styles/variables.scss" as v; 
+
+.user-section{
+    width: 240px;
+    height: 60px;
+    background-color: v.$color-blue2;
+    border: 1px solid v.$color-blue5;
+    border-radius: 32px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+
+    &:hover{
+        background-color: v.$color-blue1;
+        cursor: pointer;
+    }
+
+    .dropdown{
+
+        button{
+            background-color: transparent;
+            outline: none;
+            border: none;
+            padding: 6px;
+        }
+
+        ul{
+            background: linear-gradient(0deg, #1CC7E3 0%, rgba(255,255,255,0.3) 100%);
+            border: none;
+            border-radius: 30px;
+
+            &.dropdown-menu{
+                min-width: 50px;
+                height: 140px;
+            }
+
+            li{
+
+                a{
+                    opacity: 0.7;
+                    margin-bottom: 0.7rem;
+
+                    &:hover{
+                        background-color: transparent;
+                        opacity: 1;
+                    }
+                    
+                }
+            }
+        }
+
+        .dropdown-toggle::after {
+            display: none;
+        }
+    }
+    button{
+        background-color: transparent;
+        outline: none;
+        border: none;
+    }
+
+    .user{
+        display: flex;
+        gap: 10px;
+
+        div{
+            width: 91px;
+            height: 33px;
+
+            p{
+                font-size: 12px;
+                font-weight: 400;
+                margin: 0;
+                color: white;
+                letter-spacing: -0.3px;
+                
+
+                span{
+                    color: v.$color-blue5;
+                    font-weight: 200;
+                    font-size: 12px;
+                    letter-spacing: -0.3px;
+                }
+            }
+
+        }
+    }
+}
