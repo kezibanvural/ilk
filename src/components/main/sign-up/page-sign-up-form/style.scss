@@ -32,6 +32,21 @@
                     color: #D8D8D8;
                 }
             }
+
+            &.password-group {
+                position: relative;
+                transition: all 0.2s linear;
+      
+                .passwordEye {
+                  color: v.$color-blue1;
+                  position: absolute;
+                  top: 15px;
+                  right: 10px;
+                  transition: all 0.2s linear;
+                  z-index: 99;
+                }
+    
+              }
             
         }
 
