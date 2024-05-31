@@ -9,6 +9,7 @@ import Link from "next/link";
 import Image from "next/image";
 import eyeDefault from '/public/icons/actions/eye/State=Default.svg';
 import eyeDisabled from '/public/icons/actions/eye/State=Dissabled.svg';
+import SocialConnectionButton from "../../common/buttons/social-connect-button";
 
 const SignUpPageForm = ({ searchParams }) => {
   const [state, dispatch] = useFormState(signUpPageAction, initialResponse);
@@ -21,7 +22,7 @@ const SignUpPageForm = ({ searchParams }) => {
         <p>Please sign up to create your account</p>
       </div>
       <form action={dispatch} noValidate>
-        <div className="input-group mb-3">
+        <div className="input-group">
           <input
             type="text"
             placeholder="Your Name"
@@ -33,7 +34,7 @@ const SignUpPageForm = ({ searchParams }) => {
           />
           <div className="invalid-feedback">{state?.errors?.name}</div>
         </div>
-        <div className="input-group mb-3">
+        <div className="input-group">
           <input
             type="email"
             placeholder="Email"
@@ -46,7 +47,7 @@ const SignUpPageForm = ({ searchParams }) => {
           />
           <div className="invalid-feedback">{state?.errors?.email}</div>
         </div>
-        <div className="input-group password-group mb-3">
+        <div className="input-group password-group">
           <input
             type={`${showPassword ? "text" : "password"}`}
             placeholder="Password"
@@ -78,6 +79,13 @@ const SignUpPageForm = ({ searchParams }) => {
         </div>
         <SignUpButton />
       </form>
+      <div className="seperator">
+          <span>or</span>
+      </div>
+      <div className="social-connection">
+          <SocialConnectionButton title="Google"/>
+          <SocialConnectionButton title="Facebook"/>
+      </div>
       <div className="text-center mt-3">
         <small>
           Already have an account?

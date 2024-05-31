@@ -23,7 +23,7 @@ const MainSignUpForm = () => {
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className={`form-control rounded-5 ${
+                className={`form-control rounded-5 mt-3 ${
                   state?.errors?.email ? "is-invalid" : ""
                 }`}
                 name="email"
