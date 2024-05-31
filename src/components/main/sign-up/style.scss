@@ -7,11 +7,15 @@
     background-position: center;
     background-repeat: no-repeat;
     width: 1440px;
-    height: 80%;
+    height: 90%;
     overflow: hidden;
     border-radius: 30px;
     position: relative;
     padding: 0;
+
+    @media(max-width:500px){
+        overflow-y: scroll;
+    }
 
     .container{
         width: 100%;

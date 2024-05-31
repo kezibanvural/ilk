@@ -17,16 +17,27 @@
         }
     }
 
-    input{
-        width:399px;
-        height: 56px;
-        border-radius: 20px;
+    .input-group{
+        position: relative;
+        margin-bottom: 1rem;
 
-        &::placeholder{
-            color: #D8D8D8;
+        input{
+            width:399px;
+            height: 56px;
+            border-radius: 20px;
+    
+            &::placeholder{
+                color: #D8D8D8;
+            }
+            @media(max-width:768px){
+                height: 45px;
+                width: 100%;
+            }
         }
-        @media(max-width:768px){
-            height: 45px;
+        .invalid-feedback{
+            position: absolute;
+            left: 5px;
+            bottom: -25px;
         }
     }
 }
