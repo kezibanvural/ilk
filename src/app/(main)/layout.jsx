@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function MainLayout({ children }) {
   return (
-    <main className="container-fluid d-flex align-items-center justify-content-center vh-100">
+    <main className="vh-100">
       <MainSection>
         {children}
       </MainSection>
