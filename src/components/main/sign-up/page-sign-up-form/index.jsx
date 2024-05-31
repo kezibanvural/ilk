@@ -1,14 +1,18 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useFormState } from "react-dom";
 import { signUpPageAction } from "@/actions/signUpAction";
 import { initialResponse } from "@/helpers/formValidation";
 import "./style.scss";
 import SignUpButton from "../../common/buttons/sign-up";
 import Link from "next/link";
+import Image from "next/image";
+import eyeDefault from '/public/icons/actions/eye/State=Default.svg';
+import eyeDisabled from '/public/icons/actions/eye/State=Dissabled.svg';
 
 const SignUpPageForm = ({ searchParams }) => {
   const [state, dispatch] = useFormState(signUpPageAction, initialResponse);
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className="signup-page-form">
@@ -32,7 +36,7 @@ const SignUpPageForm = ({ searchParams }) => {
         <div className="input-group mb-3">
           <input
             type="email"
-            placeholder="Enter your email address"
+            placeholder="Email"
             className={`form-control rounded-3 ${
               state?.errors?.email ? "is-invalid" : ""
             }`}
@@ -42,10 +46,10 @@ const SignUpPageForm = ({ searchParams }) => {
           />
           <div className="invalid-feedback">{state?.errors?.email}</div>
         </div>
-        <div className="input-group mb-3">
+        <div className="input-group password-group mb-3">
           <input
-            type="password"
-            placeholder="Enter your email address"
+            type={`${showPassword ? "text" : "password"}`}
+            placeholder="Password"
             className={`form-control rounded-3 ${
               state?.errors?.password ? "is-invalid" : ""
             }`}
@@ -53,16 +57,32 @@ const SignUpPageForm = ({ searchParams }) => {
             id="password"
           />
           <div className="invalid-feedback">{state?.errors?.password}</div>
+          {showPassword ? (
+            <Image
+              src={eyeDefault}
+              className="passwordEye"
+              width={25}
+              height={17}
+              onClick={() => setShowPassword((prev) => !prev)}
+            />
+          ) : (
+            <Image
+              src={eyeDisabled}
+              className="passwordEye"
+              width={25}
+              height={17}
+              size={20}
+              onClick={() => setShowPassword((prev) => !prev)}
+            />
+          )}
         </div>
-        <SignUpButton/>
+        <SignUpButton />
       </form>
       <div className="text-center mt-3">
-      <small>
-        Already have an account?
-        <Link href="/sign-in">
-            Sign in
-        </Link>
-      </small>
+        <small>
+          Already have an account?
+          <Link href="/sign-in">Sign in</Link>
+        </small>
       </div>
     </div>
   );
