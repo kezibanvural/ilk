@@ -6,6 +6,11 @@
 
         li{
             a{
+
+                &.active{
+                    color: white!important;
+                }
+
                 @media(max-width:992px){
 
                     &::after{

@@ -1,5 +1,6 @@
 import DashboardNavbar from "@/components/dashboard/common/navbar";
 import "../../styles/index.scss";
+import DashboardSidebar from "@/components/dashboard/common/sidebar";
 
 export const metadata = {
     title: "LMXAI",
@@ -10,7 +11,12 @@ export const metadata = {
     return (
       <section className="dashboard-section">
         <DashboardNavbar/>
-        {children}
+        <div className="d-flex" style={{height:"85%"}}>
+          <DashboardSidebar/>
+          <div className="container">
+            {children}
+          </div>
+        </div>
       </section>
     );
   }
