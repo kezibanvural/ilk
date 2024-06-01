@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import "./style.scss";
+import Image from 'next/image';
 
 const DashboardSidebar = () => {
 
@@ -18,6 +19,11 @@ const DashboardSidebar = () => {
             >
             <span></span>
             <span></span>
+        </button>
+
+        <button className='new-chat'>
+            <Image src="/icons/ui/icons/add-icon.svg" width={24} height={24} alt='add-icon' />
+            <span className={closeSidebar ? "" : "d-none"}>New Chat</span>
         </button>
     </div>
   )
