@@ -1,10 +1,14 @@
-
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import "./style.scss"
+import { usePathname } from "next/navigation";
 
 const MainNavbar = () => {
+  const router = usePathname();
+  console.log(router);
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-transparent px-3 z-3">
@@ -25,22 +29,22 @@ const MainNavbar = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="nav-link" aria-current="page" href="/">
+                <Link className={router==="/" ? "active nav-link" : "nav-link"} aria-current="page" href="/">
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" href="/services">
+                <Link className={router==="/services" ? "active nav-link" : "nav-link"} href="/services">
                   Services
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" href="/app-details">
+                <Link className={router==="/app-details" ? "active nav-link" : "nav-link"} href="/app-details">
                   App Details
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" href="/contact">
+                <Link className={router==="/contact" ? "active nav-link" : "nav-link"} href="/contact">
                   Contact
                 </Link>
               </li>

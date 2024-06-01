@@ -3,9 +3,27 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    
-    h1{
-        margin-right: 30px;
-        margin-left: 10px;
+    flex-wrap: wrap;
+
+    @media(max-width:768px){
+        justify-content: center;
+        flex-direction: column-reverse;
+        gap: 1rem;
+    }
+
+    .school-name{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media(max-width:768px){
+            width: 100%;
+        }
+
+        h1{
+            margin-right: 30px;
+            margin-left: 10px;
+            color: white;
+        }
     }
 }

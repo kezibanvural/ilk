@@ -1,0 +1,63 @@
+@use "../../../../styles/variables.scss" as v;
+
+.dashboard-sidebar{
+    height: 100%;
+    width:364px ;
+    border-radius: 30px;
+    background: v.$gradient-dropdown;
+    border: 2px solid v.$color-blue2;
+    position: relative;
+    transition: all 0.5s linear;
+
+    &.closed-panel{
+        width: 80px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(28, 199, 227, 0.1) 100%);
+
+    }
+
+    button{
+        border: none;
+        background: transparent;
+        position: absolute;
+        top: -45px;
+        left: 0;
+
+        span{
+            background-color: white;
+            height: 4px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: all 0.5s linear;
+
+            &:first-child{
+                width: 35px;
+                margin-bottom: 7px;
+            }
+
+            &:last-child{
+                width: 20px;
+            }
+        }
+
+        &.x-btn{
+            position: relative;
+            top: -55px;
+
+            span{
+                position: absolute;
+
+                &:first-child{
+                    transform: rotate(315deg);
+                }
+    
+                &:last-child{
+                    width: 35px;
+                    transform: rotate(225deg);
+                }
+            }
+        }
+    }
+}
