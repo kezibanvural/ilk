@@ -22,7 +22,13 @@ const DashboardSidebar = () => {
         </button>
 
         <button className='new-chat'>
-            <Image src="/icons/ui/icons/add-icon.svg" width={24} height={24} alt='add-icon' />
+            {
+                closeSidebar ? (
+                    <Image src="/icons/ui/icons/add-icon.svg" width={24} height={24} alt='add-icon' />
+                ) : (
+                    <Image src="/icons/ui/icons/State=Default,Name=Edit.svg" width={24} height={24} alt='nechat-icon' />
+                )
+            }
             <span className={closeSidebar ? "" : "d-none"}>New Chat</span>
         </button>
     </div>
