@@ -18,7 +18,7 @@ const DashboardNavbarUserSection = () => {
         </button>
         <ul className="dropdown-menu">
           <li>
-            <Link className="dropdown-item" href="/dashboard">
+            <Link className="dropdown-item" href="/">
               <Image src="/icons/ui/icons/State=DefaultName=Home.svg" width={20} height={17} alt="home-icon" />
             </Link>
           </li>
