@@ -11,9 +11,9 @@ export const metadata = {
     return (
       <section className="dashboard-section">
         <DashboardNavbar/>
-        <div className="d-flex" style={{height:"85%"}}>
+        <div className="d-flex" style={{height:"80%"}}>
           <DashboardSidebar/>
-          <div className="container">
+          <div className="">
             {children}
           </div>
         </div>
