@@ -24,7 +24,7 @@ const DashboardSidebar = () => {
         <span></span>
       </button>
 
-      <div className="sidebar-top d-flex flex-column justify-content-start align-items-start h-100 gap-3">
+      <div className="sidebar-top d-flex flex-column justify-content-start align-items-center h-100 gap-3">
         <button className="new-chat">
           {closeSidebar ? (
             <Image
@@ -68,7 +68,7 @@ const DashboardSidebar = () => {
           )}
         
       </div>
-      <div className="sidebar-bottom d-flex gap-3 flex-column mb-4">
+      <div className="sidebar-bottom mb-4">
         <button className="new-chat">
         <Image
               src="/icons/ui/icons/State=Default,Name=Statistic.svg"
