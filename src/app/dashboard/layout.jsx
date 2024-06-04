@@ -15,9 +15,11 @@ export const metadata = {
         <Spacer height={10}/>
         <div className="d-flex dashboard-content">
           <DashboardSidebar/>
-          <div>
+          <div className="w-100">
             <Spacer height={25}/>
+            <div className="container">
             {children}
+            </div>
           </div>
         </div>
       </section>

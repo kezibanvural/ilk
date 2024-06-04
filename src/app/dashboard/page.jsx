@@ -8,7 +8,7 @@ export const metadata = {
 
 const DashboardPage = () => {
   return (
-    <div className=''>
+    <div className='container'>
       <DashboardAIChatSection/>
     </div>
   )

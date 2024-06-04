@@ -1,14 +1,66 @@
+@use "../../../styles/variables.scss" as v;
 
-.chat-header{
+.chat-container{
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    flex-direction: column;
 
-     h1{
-        color: white;
-        font-size:48px;
-        line-height: 64px;
-        text-align: left
-    };
+    .chat-header{
+    
+         h1{
+            color: white;
+            font-size:48px;
+            line-height: 64px;
+            text-align: left;
+
+            @media(max-width:768px){
+                font-size: 32px;
+                line-height: 42px;
+            }
+        };
+    }
+
+    .chat-options{
+        margin-top: 80px;
+
+        @media(max-width:768px){
+            margin-top: 20px;
+        }
+
+        .row{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+
+            @media(max-width:768px){
+                gap: 1.5rem;
+            }
+            
+            .col{
+                width: 230px;
+                height: 200px;
+                border-radius:20px;
+                border: 2px solid v.$color-blue2;
+                padding: 20px;
+
+                p{
+                    margin-top: 15px;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .chat-section{
+        
+    }
+
+    form{
+
+        &.chat-input{
+            
+        }
+    }
 }
