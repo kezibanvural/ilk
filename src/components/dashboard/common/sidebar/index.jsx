@@ -1,11 +1,17 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.scss";
 import Image from "next/image";
 
 const DashboardSidebar = () => {
+  const [screenWidth, setScreenWidth] = useState(0);
   const [closeSidebar, setCloseSidebar] = useState(true);
-
+  
+  useEffect(() => {
+    setScreenWidth(window.innerWidth);
+    setCloseSidebar(screenWidth>768 ? true : false)
+  }, [screenWidth]);
+  
   const handleCloseBtn = () => {
     setCloseSidebar((prev) => !prev);
   };

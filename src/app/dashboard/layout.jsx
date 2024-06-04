@@ -1,6 +1,7 @@
 import DashboardNavbar from "@/components/dashboard/common/navbar";
 import "../../styles/index.scss";
 import DashboardSidebar from "@/components/dashboard/common/sidebar";
+import Spacer from "@/components/common/spacer/spacer";
 
 export const metadata = {
     title: "LMXAI",
@@ -11,9 +12,11 @@ export const metadata = {
     return (
       <section className="dashboard-section">
         <DashboardNavbar/>
-        <div className="d-flex" style={{height:"80%"}}>
+        <Spacer height={10}/>
+        <div className="d-flex dashboard-content">
           <DashboardSidebar/>
-          <div className="">
+          <div>
+            <Spacer height={25}/>
             {children}
           </div>
         </div>
