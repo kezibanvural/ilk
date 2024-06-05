@@ -31,7 +31,18 @@ const DashboardAIChatSection = () => {
 
       </div>
       <form className="chat-input">
-      
+        <div>
+        <input 
+          type="text"
+          className="form-control"
+          placeholder="Message..."
+          name="message"
+        />
+        <button type="submit">
+          <Image src="/icons/ui/dropdown/State=Default.svg" width={28} height={28} alt="arrow-icon" />
+        </button>
+        </div>
+      <small>Lmxai may occasionally produce incorrect information. Please double check before using the information.</small>
       </form>
     </div>
   );
