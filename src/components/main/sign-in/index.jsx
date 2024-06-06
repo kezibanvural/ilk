@@ -3,13 +3,13 @@ import React, { useState } from 'react'
 import { useFormState } from "react-dom";
 import "./style.scss"
 import Image from 'next/image'
-import SignUpButton from '../common/buttons/sign-up'
 import SocialConnectionButton from '../common/buttons/social-connect-button'
 import Link from 'next/link'
 import { initialResponse } from '@/helpers/formValidation'
 import { signUpPageAction } from '@/actions/signUpAction'
 import eyeDefault from '/public/icons/actions/eye/State=Default.svg';
 import eyeDisabled from '/public/icons/actions/eye/State=Dissabled.svg';
+import SignInButton from '../common/buttons/sign-in';
 
 const SignInForm = () => {
     const [state, dispatch] = useFormState(signUpPageAction, initialResponse);
@@ -64,7 +64,7 @@ const SignInForm = () => {
             />
           )}
         </div>
-        <SignUpButton />
+        <SignInButton/>
       </form>
       <div className="seperator">
           <span>or</span>
@@ -75,7 +75,7 @@ const SignInForm = () => {
       </div>
       <div className="text-center mt-3">
         <small>
-        Don’t have an account yet?
+        Don&apos;t have an account yet?
           <Link href="/sign-up">Sign up</Link>
         </small>
       </div>

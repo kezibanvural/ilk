@@ -47,11 +47,12 @@
             }
             
             .col{
-                width: 230px;
-                height: 200px;
+                width: 184px;
+                height: 160px;
                 border-radius:20px;
                 border: 2px solid v.$color-blue2;
                 padding: 20px;
+                font-size: 14px;
 
                 @media (max-width: 768px) {
             
@@ -61,9 +62,9 @@
                   }
 
                 @media(max-width:1200px){
-                    width: 184px;
-                    height: 160px;
-                    font-size: 14px;
+                    width: 166px;
+                    height: 144px;
+                    font-size: 12px;
                 }
 
                 p{

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./style.scss";
 import Image from "next/image";
 import history from "./history.json";
+import Link from "next/link";
 
 const DashboardSidebar = () => {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -52,9 +53,9 @@ const DashboardSidebar = () => {
         </button>
         {closeSidebar ? (
           <form>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">
+            <div className="input-group mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="basic-addon1">
                   <Image
                     src="/icons/actions/magnifyingGlass/State=Default.svg"
                     width={20}
@@ -65,7 +66,7 @@ const DashboardSidebar = () => {
               </div>
               <input
                 type="text"
-                class={closeSidebar ? "form-control" : "form-control d-none"}
+                className={closeSidebar ? "form-control" : "form-control d-none"}
                 placeholder="Search"
                 aria-label="Search"
                 aria-describedby="basic-addon1"
@@ -86,11 +87,11 @@ const DashboardSidebar = () => {
 
         <div className={closeSidebar ? "history" : "history d-none"}>
           <h6>Recent Converstaions</h6>
-          <div class="accordion" id="chatHistory">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
+          <div className="accordion" id="chatHistory">
+            <div className="accordion-item">
+              <h2 className="accordion-header">
                 <button
-                  class="accordion-button"
+                  className="accordion-button"
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#collapseOne"
@@ -102,29 +103,93 @@ const DashboardSidebar = () => {
               </h2>
               <div
                 id="collapseOne"
-                class="accordion-collapse collapse show"
+                className="accordion-collapse collapse show"
                 data-bs-parent="#chatHistory"
               >
-                <div class="accordion-body">
+                <div className="accordion-body">
                   <ul>
-                  {
-                    history.today.map((item)=> (
+                    {history.today.map((item) => (
                       <li key={item.id}>
                         <div>
-                        <Image src="/icons/actions/file/State=Default.svg" height={24} width={24} alt="file-icon" />
-                        <span>{item.title}</span>
+                          <Image
+                            src="/icons/actions/file/State=Default.svg"
+                            height={24}
+                            width={24}
+                            alt="file-icon"
+                          />
+                          <span>{item.title}</span>
+                        </div>
+                        <div className="dropdown">
+                          <button
+                            className="dropdown-toggle"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                          >
+                            <Image
+                              src="icons/ui/icons/ellipsis-icon.svg"
+                              width={21.6}
+                              height={4.45}
+                              alt="ellipsis-icon"
+                            />
+                          </button>
+                          <ul className="dropdown-menu">
+                            <li>
+                              <Link className="dropdown-item" href="/dashboard">
+                                <Image
+                                  src="/icons/ui/icons/State=Default,Name=Share.svg"
+                                  width={20}
+                                  height={20}
+                                  alt="home-icon"
+                                />
+                                <span>Share</span>
+                              </Link>
+                            </li>
+                            <li>
+                              <Link className="dropdown-item" href="/dashboard">
+                                <Image
+                                  src="/icons/ui/icons/State=Default,Name=Rename.svg"
+                                  width={19}
+                                  height={20}
+                                  alt="book-icon"
+                                />
+                                <span>Rename</span>
+                              </Link>
+                            </li>
+                            <li>
+                              <Link className="dropdown-item" href="/dashboard">
+                                <Image
+                                  src="/icons/ui/icons/State=Default,Name=Archive.svg"
+                                  width={20}
+                                  height={20}
+                                  alt="user-icon"
+                                />
+                                <span>Archive</span>
+                              </Link>
+                            </li>
+                            <li>
+                              <Link className="dropdown-item" href="/dashboard">
+                                <Image
+                                  src="/icons/ui/icons/State=Default,Name=Clear.svg"
+                                  width={20}
+                                  height={20}
+                                  alt="user-icon"
+                                />
+                                <span>Delete</span>
+                              </Link>
+                            </li>
+                          </ul>
                         </div>
                       </li>
-                    ))
-                  }
+                    ))}
                   </ul>
                 </div>
               </div>
             </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
+            <div className="accordion-item">
+              <h2 className="accordion-header">
                 <button
-                  class="accordion-button collapsed"
+                  className="accordion-button collapsed"
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#collapseTwo"
@@ -136,11 +201,86 @@ const DashboardSidebar = () => {
               </h2>
               <div
                 id="collapseTwo"
-                class="accordion-collapse collapse"
+                className="accordion-collapse collapse"
                 data-bs-parent="#chatHistory"
               >
-                <div class="accordion-body">
-                  
+                <div className="accordion-body">
+                  <ul>
+                    {history.yesterday.map((item) => (
+                      <li key={item.id}>
+                        <div>
+                          <Image
+                            src="/icons/actions/file/State=Default.svg"
+                            height={24}
+                            width={24}
+                            alt="file-icon"
+                          />
+                          <span>{item.title}</span>
+                        </div>
+                        <div className="dropdown">
+                          <button
+                            className="dropdown-toggle"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                          >
+                            <Image
+                              src="icons/ui/icons/ellipsis-icon.svg"
+                              width={21.6}
+                              height={4.45}
+                              alt="ellipsis-icon"
+                            />
+                          </button>
+                          <ul className="dropdown-menu">
+                            <li>
+                              <Link className="dropdown-item" href="/dashboard">
+                                <Image
+                                  src="/icons/ui/icons/State=Default,Name=Share.svg"
+                                  width={20}
+                                  height={20}
+                                  alt="home-icon"
+                                />
+                                <span>Share</span>
+                              </Link>
+                            </li>
+                            <li>
+                              <Link className="dropdown-item" href="/dashboard">
+                                <Image
+                                  src="/icons/ui/icons/State=Default,Name=Rename.svg"
+                                  width={19}
+                                  height={20}
+                                  alt="book-icon"
+                                />
+                                <span>Rename</span>
+                              </Link>
+                            </li>
+                            <li>
+                              <Link className="dropdown-item" href="/dashboard">
+                                <Image
+                                  src="/icons/ui/icons/State=Default,Name=Archive.svg"
+                                  width={20}
+                                  height={20}
+                                  alt="user-icon"
+                                />
+                                <span>Archive</span>
+                              </Link>
+                            </li>
+                            <li>
+                              <Link className="dropdown-item" href="/dashboard">
+                                <Image
+                                  src="/icons/ui/icons/State=Default,Name=Clear.svg"
+                                  width={20}
+                                  height={20}
+                                  alt="user-icon"
+                                />
+                                <span>Delete</span>
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>
