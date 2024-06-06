@@ -196,6 +196,95 @@
     }
   }
 
+  .sidebar-top{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    flex-direction: column;
+    height: 100%;
+    text-align: left;
+  
+    .history{
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+      
+      h6{
+        text-align: left;
+        color: white;
+      }
+
+      .accordion{
+        width: 100%;
+
+        .accordion-item{
+          background-color: transparent;
+          border: none;
+
+          .accordion-header{
+
+            .accordion-button{
+              background-color: transparent;
+              border: none;
+              box-shadow: none;
+              color: white;
+              padding: 0;
+              font-weight: 400;
+              font-size: 14px;
+
+              &::after{
+                background-image: url("../../../../../public/icons/actions/arrow/State=Default.svg");
+                transform: rotateY('18deg');
+              }
+
+              &.collapsed{
+                padding: 0.2rem 0;
+
+                &::after{
+                  background-image: url("../../../../../public/icons/actions/arrow/State=Default.svg");
+                }
+              }
+            }
+          }
+
+          .accordion-collapse{
+
+            .accordion-body{
+
+              ul{
+                list-style-type: none;
+                padding: 0;
+
+                li{
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+
+                  div{
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 0.5rem;
+
+                    span{
+                      text-overflow: ellipsis;
+                      font-size: 14px;
+                      width: 70%;
+                      color: white;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   .sidebar-bottom {
     display: flex;
     align-items: center;

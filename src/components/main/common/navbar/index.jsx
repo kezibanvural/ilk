@@ -33,19 +33,24 @@ const MainNavbar = () => {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link className={router==="/services" ? "active nav-link" : "nav-link"} href="/services">
                   Services
                 </Link>
-              </li>
-              <li className="nav-item">
+              </li> */}
+              {/* <li className="nav-item">
                 <Link className={router==="/app-details" ? "active nav-link" : "nav-link"} href="/app-details">
                   App Details
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link className={router==="/contact" ? "active nav-link" : "nav-link"} href="/contact">
                   Contact
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className={router==="/contact" ? "active nav-link" : "nav-link"} href="/dashboard">
+                  Dashboard
                 </Link>
               </li>
             </ul>
