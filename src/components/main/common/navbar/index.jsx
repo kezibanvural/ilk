@@ -48,11 +48,6 @@ const MainNavbar = () => {
                   Contact
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className={router==="/contact" ? "active nav-link" : "nav-link"} href="/dashboard">
-                  Dashboard
-                </Link>
-              </li>
             </ul>
           </div>
         </div>
