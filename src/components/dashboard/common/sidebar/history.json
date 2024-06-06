@@ -1,0 +1,38 @@
+{
+    "today": [
+        {
+            "id": 1,
+            "title": "Python Programming Basics"
+        },
+        {
+            "id": 2,
+            "title": "Advanced Data Science Techniques"
+        },
+        {
+            "id": 3,
+            "title": "Full Stack Web Development"
+        },
+        {
+            "id": 4,
+            "title": "Cyber Security Essentials"
+        }
+    ],
+    "yesterday": [
+        {
+            "id": 5,
+            "title": "Introduction to Machine Learning"
+        },
+        {
+            "id": 6,
+            "title": "Artificial Intelligence Applications"
+        },
+        {
+            "id": 7,
+            "title": "Cloud Computing Services"
+        },
+        {
+            "id": 8,
+            "title": "Big Data Analysis"
+        }
+    ]
+}
