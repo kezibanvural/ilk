@@ -1,48 +1,110 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./style.scss";
 import Image from "next/image";
 
 const DashboardAIChatSection = () => {
   const [chat, setChat] = useState(false);
-  const [inputValue, setInputValue] = useState("")
+  const [inputValue, setInputValue] = useState("");
+  const [apiData, setApiData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const chatSectionRef = useRef(null);
 
   const handleChat = async () => {
+    if (!inputValue) return;
+    setLoading(true);
     setChat(true);
-    
+
     const url = `https://5000-01hw0ajtd083fjct2wwgvbjt3g.cloudspaces.litng.ai/ask`;
-    const options = { 
+    const options = {
       method: "POST",
-      headers:{
+      headers: {
         "Content-Type": "application/json"
-      }, 
-      body:{question:inputValue} 
+      },
+      body: JSON.stringify({ question: inputValue })
     };
     try {
-      const response = await fetch(url, { 
-        method: "POST",
-        headers:{
-          "Content-Type": "application/json"
-        }, 
-        body:{"question":inputValue} 
-      });
+      const response = await fetch(url, options);
       const data = await response.json();
+      setApiData((prevData) => [...prevData, data]);
+      setInputValue("");
       console.log(data);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
-  console.log("inputValue",inputValue);
+  useEffect(() => {
+    if (chatSectionRef.current) {
+      chatSectionRef.current.scrollTop = chatSectionRef.current.scrollHeight;
+    }
+  }, [apiData, loading]);
+
+  console.log("inputValue", inputValue);
 
   return (
-    <div className="chat-container  gap-4">
+    <div className="chat-container gap-4">
       {chat ? (
-        <div className="chat-section w-100 h-100 container">
-          <div className="row w-100 h-100">
-            <div className="d-none d-md-block col-md-1 bg-danger"></div>
-            <div className="col-md-11 bg-secondary"></div>
-          </div>
+        <div className="chat-section w-100 h-100 container" ref={chatSectionRef}>
+          {apiData?.map((item, index) => (
+            <div key={index} className="row w-100 mb-5">
+              <div className="col-md-1">
+                <Image
+                  src="/icons/ui/avatar/State=Default.png"
+                  width={55}
+                  height={55}
+                  alt="user-avatar"
+                />
+              </div>
+              <div className="col-md-10 answer-header">
+                <div className="mb-2">
+                  <span>{item?.answer?.query}</span>
+                  <Image
+                    src="/icons/ui/icons/State=Default,Name=Edit.svg"
+                    width={24}
+                    height={24}
+                    alt="pencil"
+                  />
+                </div>
+                <div className="separator"></div>
+              </div>
+              <div className="col-md-1"></div>
+              <div className="col-md-10">{item?.answer?.result}</div>
+            </div>
+          ))}
+          {loading && (
+            <div className="row w-100 mb-5">
+              <div className="col-md-1">
+                <Image
+                  src="/icons/ui/avatar/State=Default.png"
+                  width={55}
+                  height={55}
+                  alt="user-avatar"
+                />
+              </div>
+              <div className="col-md-10 answer-header">
+                <div className="mb-2 placeholder-glow">
+                  <span className="placeholder col-5 rounded-3"></span>
+                  <Image
+                    src="/icons/ui/icons/State=Default,Name=Edit.svg"
+                    width={24}
+                    height={24}
+                    alt="pencil"
+                  />
+                </div>
+                <div className="separator"></div>
+              </div>
+              <div className="col-md-1 placeholder-glow">
+              </div>
+              <div className="col-md-10 placeholder-glow">
+                <span className="placeholder col-10 rounded-3"></span>
+                <span className="placeholder col-10 rounded-3"></span>
+                <span className="placeholder col-6 rounded-3"></span>
+              </div>
+            </div>
+          )}
         </div>
       ) : (
         <>
@@ -85,16 +147,28 @@ const DashboardAIChatSection = () => {
           </div>
         </>
       )}
-      <form className="chat-input">
+      <form className="chat-input" onSubmit={(e) => { e.preventDefault(); handleChat(); }}>
         <div>
           <input
             type="text"
             className="form-control"
             placeholder="Message..."
             name="message"
-            onChange={(e)=>setInputValue(e.target.value)}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
           />
-          <button type="button" onClick={() => handleChat()}>
+          {
+            loading ? (
+              <button type="button">
+            <Image
+              src="/icons/actions/arrow/pause.svg"
+              width={28}
+              height={28}
+              alt="arrow-icon"
+            />
+          </button>
+            ) : (
+              <button type="button" onClick={handleChat}>
             <Image
               src="/icons/ui/dropdown/State=Default.svg"
               width={28}
@@ -102,10 +176,12 @@ const DashboardAIChatSection = () => {
               alt="arrow-icon"
             />
           </button>
+            )
+          }
+          
         </div>
         <small>
-          Lmxai may occasionally produce incorrect information. Please double
-          check before using the information.
+          Lmxai may occasionally produce incorrect information. Please double check before using the information.
         </small>
       </form>
     </div>
