@@ -12,7 +12,7 @@ export default function Home() {
                 <span>Welcome to </span>
                 <span>Learning Matrix</span>
               </h1>
-              <p>Before you dive in, let's get you started!</p>
+              <p>Before you dive in, let&apos;s get you started!</p>
               <MainSignUpForm />
              
             </div>

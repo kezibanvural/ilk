@@ -7,7 +7,7 @@ const DashboardNavbar = () => {
   return (
     <div className='dashboard-navbar'>
         <div className='school-name'>
-        <Image src="/logos/Size=Small.svg"  width={66} height={70}/>
+        <Image src="/logos/Size=Small.svg"  width={66} height={70} alt='logo'/>
         <h1>Learning Matrix</h1>
         </div>
         <DashboardNavbarUserSection/>
