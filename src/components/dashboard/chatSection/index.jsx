@@ -10,10 +10,22 @@ const DashboardAIChatSection = () => {
   const handleChat = async () => {
     setChat(true);
     
-    const url = `https://8509-01hw0ajtd083fjct2wwgvbjt3g.cloudspaces.litng.ai`;
-    const options = { method: "GET" };
+    const url = `https://5000-01hw0ajtd083fjct2wwgvbjt3g.cloudspaces.litng.ai/ask`;
+    const options = { 
+      method: "POST",
+      headers:{
+        "Content-Type": "application/json"
+      }, 
+      body:{question:inputValue} 
+    };
     try {
-      const response = await fetch(url, options);
+      const response = await fetch(url, { 
+        method: "POST",
+        headers:{
+          "Content-Type": "application/json"
+        }, 
+        body:{"question":inputValue} 
+      });
       const data = await response.json();
       console.log(data);
     } catch (error) {
