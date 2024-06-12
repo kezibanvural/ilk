@@ -51,6 +51,7 @@ const SignInForm = () => {
               className="passwordEye"
               width={25}
               height={17}
+              alt='eyeOpened-icon'
               onClick={() => setShowPassword((prev) => !prev)}
             />
           ) : (
@@ -60,6 +61,7 @@ const SignInForm = () => {
               width={25}
               height={17}
               size={20}
+              alt='eyeClosed-icon'
               onClick={() => setShowPassword((prev) => !prev)}
             />
           )}

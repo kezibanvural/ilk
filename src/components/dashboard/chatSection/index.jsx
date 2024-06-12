@@ -1,19 +1,34 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.scss";
 import Image from "next/image";
 
 const DashboardAIChatSection = () => {
   const [chat, setChat] = useState(false);
+  const [inputValue, setInputValue] = useState("")
+
+  const handleChat = async () => {
+    setChat(true);
+    
+    const url = `https://8509-01hw0ajtd083fjct2wwgvbjt3g.cloudspaces.litng.ai`;
+    const options = { method: "GET" };
+    try {
+      const response = await fetch(url, options);
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  console.log("inputValue",inputValue);
 
   return (
     <div className="chat-container  gap-4">
       {chat ? (
         <div className="chat-section w-100 h-100 container">
           <div className="row w-100 h-100">
-            <div className="d-none d-md-block col-md-1 bg-danger">
-              
-            </div>
+            <div className="d-none d-md-block col-md-1 bg-danger"></div>
             <div className="col-md-11 bg-secondary"></div>
           </div>
         </div>
@@ -43,7 +58,7 @@ const DashboardAIChatSection = () => {
                   width={24}
                   alt="file-icon"
                 />
-                <p>Look For History Of The Rubik's Cube</p>
+                <p>Look For History Of The Rubik&apos;s Cube</p>
               </div>
               <div className="col">
                 <Image
@@ -65,8 +80,9 @@ const DashboardAIChatSection = () => {
             className="form-control"
             placeholder="Message..."
             name="message"
+            onChange={(e)=>setInputValue(e.target.value)}
           />
-          <button type="button" onClick={() => setChat(true)}>
+          <button type="button" onClick={() => handleChat()}>
             <Image
               src="/icons/ui/dropdown/State=Default.svg"
               width={28}

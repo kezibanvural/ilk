@@ -23,7 +23,7 @@ const MainNavbar = () => {
             aria-label="Toggle navigation"
           >
              <span>
-              <Image src="/icons/actions/main-menu/State=Default.svg" width={45} height={45} />
+              <Image src="/icons/actions/main-menu/State=Default.svg" width={45} height={45} alt="logo"/>
              </span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
