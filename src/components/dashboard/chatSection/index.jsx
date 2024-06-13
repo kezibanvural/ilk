@@ -149,14 +149,13 @@ const DashboardAIChatSection = () => {
       )}
       <form className="chat-input" onSubmit={(e) => { e.preventDefault(); handleChat(); }}>
         <div>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Message..."
-            name="message"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-          />
+          <div
+            contentEditable="true"
+            className="form-control text-input"
+            data-text="Message"
+            onInput={(e) => setInputValue(e.currentTarget.textContent)}
+          >
+          </div>
           {
             loading ? (
               <button type="button">
