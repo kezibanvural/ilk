@@ -10,6 +10,11 @@
       position: absolute;
       top: -60px;
       left: 10px;
+
+      @media(max-width:992px){
+        top: -55px;
+        left: 0;
+      }
   
       span {
         background-color: white;
@@ -37,6 +42,11 @@
         height: 17px;
         top: -60px;
         left: 10px;
+
+        @media(max-width:992px){
+          top: -55px;
+          left: 0;
+        }
   
         span {
           position: absolute;
@@ -78,6 +88,9 @@
     padding: 0.5rem;
     padding-top: 30px;
     height: 100%;
+  }
+
+  @media(max-width:992px){
     position: absolute;
     left: 0;
     z-index: 99;
@@ -93,7 +106,7 @@
       rgba(28, 199, 227, 0.1) 100%
     );
 
-    @media (max-width: 500px) {
+    @media (max-width: 992px) {
       display: none;
     }
 
@@ -312,6 +325,10 @@
                       padding: 25px;
                       top: -5px!important;
                       left: 20px!important;
+
+                      @media(max-width:576px){
+                        left:-15px!important;
+                      }
 
                       &.dropdown-menu{
                         min-width: 141px;
