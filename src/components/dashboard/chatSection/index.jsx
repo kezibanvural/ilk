@@ -74,8 +74,8 @@ const DashboardAIChatSection = () => {
       {chat ? (
         <div className="chat-section w-100 h-100 container" ref={chatSectionRef}>
           {apiData?.map((item, index) => (
-            <div key={index} className="row w-100 mb-5">
-              <div className="col-md-1">
+            <div key={index} className="row w-100 mb-2 mb-md-5">
+              <div className="col-0 col-md-1 d-none d-md-block">
                 <Image
                   src="/icons/ui/avatar/State=Default.png"
                   width={55}
@@ -83,7 +83,7 @@ const DashboardAIChatSection = () => {
                   alt="user-avatar"
                 />
               </div>
-              <div className="col-md-10 answer-header">
+              <div className="col-12 col-md-10 answer-header">
                 <div className="mb-2">
                   <span>{item?.answer?.query}</span>
                   <Image
@@ -95,8 +95,8 @@ const DashboardAIChatSection = () => {
                 </div>
                 <div className="separator"></div>
               </div>
-              <div className="col-md-1"></div>
-              <div className="col-md-10">
+              <div className="col-0 col-md-1 d-none d-md-block"></div>
+              <div className="col-12 col-md-10">
                 <div
                   dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(marked(item?.answer?.result || "")) }}
                 ></div>
