@@ -9,6 +9,7 @@ const DashboardAIChatSection = () => {
   const [apiData, setApiData] = useState([]);
   const [loading, setLoading] = useState(false);
   const chatSectionRef = useRef(null);
+  const textareaRef = useRef(null);
 
   const handleChat = async () => {
     if (!inputValue) return;
@@ -42,7 +43,28 @@ const DashboardAIChatSection = () => {
     }
   }, [apiData, loading]);
 
-  console.log("inputValue", inputValue);
+  const autoHeight = (elem) => {
+    elem.style.height = '1px';
+    elem.style.height = `${elem.scrollHeight}px`;
+  };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+    autoHeight(e.target);
+  };
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      autoHeight(textareaRef.current);
+    }
+  }, [inputValue]);
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleChat();
+    }
+  };
 
   return (
     <div className="chat-container gap-4">
@@ -96,8 +118,7 @@ const DashboardAIChatSection = () => {
                 </div>
                 <div className="separator"></div>
               </div>
-              <div className="col-md-1 placeholder-glow">
-              </div>
+              <div className="col-md-1 placeholder-glow"></div>
               <div className="col-md-10 placeholder-glow">
                 <span className="placeholder col-10 rounded-3"></span>
                 <span className="placeholder col-10 rounded-3"></span>
@@ -149,35 +170,37 @@ const DashboardAIChatSection = () => {
       )}
       <form className="chat-input" onSubmit={(e) => { e.preventDefault(); handleChat(); }}>
         <div>
-          <div
-            contentEditable="true"
+          <textarea
+            ref={textareaRef}
+            style={{ overflow: 'hidden' }}
+            rows={1}
             className="form-control text-input"
-            data-text="Message"
-            onInput={(e) => setInputValue(e.currentTarget.textContent)}
-          >
-          </div>
+            placeholder="Message"
+            value={inputValue}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+          />
           {
             loading ? (
-              <button type="button">
-            <Image
-              src="/icons/actions/arrow/pause.svg"
-              width={28}
-              height={28}
-              alt="arrow-icon"
-            />
-          </button>
+              <button type="submit">
+                <Image
+                  src="/icons/actions/arrow/pause.svg"
+                  width={28}
+                  height={28}
+                  alt="arrow-icon"
+                />
+              </button>
             ) : (
-              <button type="button" onClick={handleChat}>
-            <Image
-              src="/icons/ui/dropdown/State=Default.svg"
-              width={28}
-              height={28}
-              alt="arrow-icon"
-            />
-          </button>
+              <button type="submit">
+                <Image
+                  src="/icons/ui/dropdown/State=Default.svg"
+                  width={28}
+                  height={28}
+                  alt="arrow-icon"
+                />
+              </button>
             )
           }
-          
         </div>
         <small>
           Lmxai may occasionally produce incorrect information. Please double check before using the information.
