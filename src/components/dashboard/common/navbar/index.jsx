@@ -6,7 +6,7 @@ import "./style.scss";
 const DashboardNavbar = () => {
   return (
     <div className='dashboard-navbar'>
-        <div className='school-name ms-5'>
+        <div className='school-name'>
         <Image src="/logos/Size=Small.svg"  width={66} height={66} alt='logo'/>
         <h1>Learning Matrix</h1>
         </div>

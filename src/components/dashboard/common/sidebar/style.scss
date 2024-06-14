@@ -16,7 +16,7 @@
         left: 0;
       }
       @media(max-width:576px){
-        top: -45px;
+        top: -40px;
       }
   
       span {
@@ -28,14 +28,27 @@
         justify-content: center;
         flex-direction: column;
         transition: all 0.5s linear;
+
+        @media(max-width:576px){
+          height: 3px;
+          border-radius: 50px;
+        }
   
         &:first-child {
           width: 35px;
           margin-bottom: 7px;
+
+          @media(max-width:576px){
+            width: 25px;
+            margin-bottom: 4px;
+          }
         }
   
         &:last-child {
           width: 20px;
+          @media(max-width:576px){
+            width: 10px;
+          }
         }
       }
   
