@@ -2,6 +2,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./style.scss";
 import Image from "next/image";
+import {marked} from "marked"; 
+import DOMPurify from "dompurify";
 
 const DashboardAIChatSection = () => {
   const [chat, setChat] = useState(false);
@@ -20,10 +22,11 @@ const DashboardAIChatSection = () => {
     const options = {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ question: inputValue })
+      body: JSON.stringify({ question: inputValue }),
     };
+
     try {
       const response = await fetch(url, options);
       const data = await response.json();
@@ -93,7 +96,11 @@ const DashboardAIChatSection = () => {
                 <div className="separator"></div>
               </div>
               <div className="col-md-1"></div>
-              <div className="col-md-10">{item?.answer?.result}</div>
+              <div className="col-md-10">
+                <div
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(marked(item?.answer?.result || "")) }}
+                ></div>
+              </div>
             </div>
           ))}
           {loading && (
@@ -175,35 +182,34 @@ const DashboardAIChatSection = () => {
             style={{ overflow: 'hidden' }}
             rows={1}
             className="form-control text-input"
+            data-text="Message"
             placeholder="Message"
             value={inputValue}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
           />
-          {
-            loading ? (
-              <button type="submit">
-                <Image
-                  src="/icons/actions/arrow/pause.svg"
-                  width={28}
-                  height={28}
-                  alt="arrow-icon"
-                />
-              </button>
-            ) : (
-              <button type="submit">
-                <Image
-                  src="/icons/ui/dropdown/State=Default.svg"
-                  width={28}
-                  height={28}
-                  alt="arrow-icon"
-                />
-              </button>
-            )
-          }
+          {loading ? (
+            <button type="button">
+              <Image
+                src="/icons/actions/arrow/pause.svg"
+                width={28}
+                height={28}
+                alt="arrow-icon"
+              />
+            </button>
+          ) : (
+            <button type="submit">
+              <Image
+                src="/icons/ui/dropdown/State=Default.svg"
+                width={28}
+                height={28}
+                alt="arrow-icon"
+              />
+            </button>
+          )}
         </div>
         <small>
-          Lmxai may occasionally produce incorrect information. Please double check before using the information.
+          Lmxai may occasionally produce incorrect information. Please double-check before using the information.
         </small>
       </form>
     </div>
