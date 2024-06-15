@@ -16,7 +16,7 @@
         left: 0;
       }
       @media(max-width:576px){
-        top: -40px;
+        top: -35px;
       }
   
       span {
@@ -65,7 +65,7 @@
         }
         
         @media(max-width:576px){
-          top: -45px;
+          top: -35px;
         }
   
         span {
@@ -78,6 +78,10 @@
           &:last-child {
             width: 35px;
             transform: rotate(225deg);
+
+            @media(max-width:576px){
+              width: 25px;
+            }
           }
         }
       }
