@@ -10,6 +10,7 @@ const DashboardAIChatSection = () => {
   const [inputValue, setInputValue] = useState("");
   const [apiData, setApiData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [copyClipboard, setCopyClipboard] = useState(false)
   const chatSectionRef = useRef(null);
   const textareaRef = useRef(null);
 
@@ -30,15 +31,17 @@ const DashboardAIChatSection = () => {
     try {
       const response = await fetch(url, options);
       const data = await response.json();
+      const sanitizedHtml = DOMPurify.sanitize(marked(data?.answer?.result || ""));
+    console.log("sanitizedHtml",sanitizedHtml);
       setApiData((prevData) => [...prevData, data]);
       setInputValue("");
-      console.log(data);
     } catch (error) {
       console.error(error);
     } finally {
       setLoading(false);
     }
   };
+
 
   useEffect(() => {
     if (chatSectionRef.current) {
@@ -69,6 +72,24 @@ const DashboardAIChatSection = () => {
     }
   };
 
+  const handleCopyClick = (index) => {
+    const codeBlocks = document.querySelectorAll(`.code-column-${index} code`);
+    let codeText = "";
+    codeBlocks.forEach((block) => {
+      codeText += block.innerText + "\n";
+    });
+    navigator.clipboard.writeText(codeText).then(
+      () => {
+        console.log("Copied to clipboard");
+        setCopyClipboard(true);
+        setTimeout(() => setCopyClipboard(false), 2000);
+      },
+      (err) => {
+        console.error("Failed to copy: ", err);
+      }
+    );
+  };
+
   return (
     <div className="chat-container gap-4">
       {chat ? (
@@ -96,10 +117,23 @@ const DashboardAIChatSection = () => {
                 <div className="separator"></div>
               </div>
               <div className="col-0 col-md-1 d-none d-md-block"></div>
-              <div className="col-12 col-md-10">
+              <div className={`col-12 col-md-10 code-column code-column-${index}`}>
                 <div
+                  className={DOMPurify.sanitize(marked(item?.answer?.result || "")).includes("<code") ? "code-block" : ""}
                   dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(marked(item?.answer?.result || "")) }}
                 ></div>
+                {DOMPurify.sanitize(marked(item?.answer?.result || "")).includes("<code") && (
+                  <div className="copy-button">
+                    <button onClick={() => handleCopyClick(index)}>
+                      {copyClipboard ? (
+                        <Image src="/icons/actions/copy/copied-icon.svg" width={24} height={24} alt="copied-icon" />
+                      ) : (
+                        <Image src="/icons/actions/copy/copy-icon.svg" width={24} height={24} alt="copy-icon" />
+                      )}
+                      <span>Copy</span>
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           ))}
