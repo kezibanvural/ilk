@@ -183,6 +183,60 @@
                 
             }
         }
+
+        .code-column{
+            position: relative;
+            margin-bottom: 2rem;
+
+            .code-block{
+
+                pre{
+                    margin: 0;
+                    width: 100%;
+                    height: auto;
+                    overflow: visible;
+    
+                    code{
+                        background-color: v.$color-blue2;
+                        border-radius: 15px 15px 0 15px;
+                        padding: 1rem;
+                        display: block;
+                    }
+
+                    & ~ p {
+                        margin-top: 2rem;
+                    }
+                };
+            }
+            .copy-button {
+                    
+                button{
+                    margin-top: 0.5rem;
+                    border: none;
+                    border-bottom: 1px solid v.$color-blue4;
+                    background-color: v.$color-blue2;
+                    width: 100px;
+                    height: 30px;
+                    border-radius: 0 0 10px 10px;
+                    color: white;
+                    position: absolute;
+                    bottom: -31px;
+                    right: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 0.3rem;
+    
+                    &:hover{
+                        background-color: v.$color-blue4;
+                    }
+                
+                    &:active{
+                        background-color: v.$color-blue1;
+                    }
+                }
+            }
+        }
     }
 
     form{
@@ -220,10 +274,12 @@
                     padding:16px 60px 8px 60px ;
                     text-align: left;
                     resize: none;
+                    font-size: 16px;
 
                     @media(max-width:576px){
                         min-height: 45px;
-                        padding: 10px 60px 0 30px;
+                        // padding: 10px 60px 0 30px;
+                        padding-bottom: 19px;
                         font-size: 14px;
                         max-height: 115px;
                     }
@@ -259,7 +315,7 @@
                     transition: all 0.1s linear;
 
                     @media(max-width:576px){
-                        bottom: 7px;
+                        bottom: 10px;
                     }
     
                     &:active{
