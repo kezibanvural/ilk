@@ -4,6 +4,7 @@ import "./style.scss";
 import Image from "next/image";
 import {marked} from "marked"; 
 import DOMPurify from "dompurify";
+import AttachmentFile from "../common/attach-file";
 
 const DashboardAIChatSection = () => {
   const [chat, setChat] = useState(false);
@@ -211,6 +212,7 @@ const DashboardAIChatSection = () => {
       )}
       <form className="chat-input" onSubmit={(e) => { e.preventDefault(); handleChat(); }}>
         <div>
+        <AttachmentFile/>
           <textarea
             ref={textareaRef}
             style={{ overflow: 'hidden' }}
@@ -223,7 +225,7 @@ const DashboardAIChatSection = () => {
             onKeyDown={handleKeyDown}
           />
           {loading ? (
-            <button type="button">
+            <button type="button" className="submit-btn">
               <Image
                 src="/icons/actions/arrow/pause.svg"
                 width={28}
@@ -232,7 +234,7 @@ const DashboardAIChatSection = () => {
               />
             </button>
           ) : (
-            <button type="submit">
+            <button type="submit"  className="submit-btn">
               <Image
                 src="/icons/ui/dropdown/State=Default.svg"
                 width={28}
