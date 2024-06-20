@@ -34,9 +34,13 @@ const AttachmentFile = () => {
     });
   };
 
+  const handleRemove = (fileToRemove) => {
+    setFiles((prevFiles) => prevFiles.filter((file) => file !== fileToRemove));
+  };
+
   console.log("files", files);
 
-  const fileDetailsHeight = files.length * 50 + 150
+  const fileDetailsHeight = files.length * 50 + 150;
 
   return (
     <div className="dropzone-container">
@@ -78,20 +82,34 @@ const AttachmentFile = () => {
           );
         }}
       </Dropzone>
-      <ul className={files.length === 0 ? "file-details d-none" : "file-details"}>
-        {files.map((file, index) => (
-          <lş key={index} className="file-detail-item bg-primary" style={{top:-`${(index + 1)*35 + 100}`}}>
-            <Image
-              src="/icons/actions/file/State=Default.svg"
-              width={25}
-              height={25}
-              className="img-container"
-              alt="Uploaded file"
-            />
-            <span className="text-white">{file.path}</span>
-          </lş>
-        ))}
-      </ul>
+      <div className="list-container">
+        <ul
+          className={
+            files.length === 0 ? "file-details d-none" : "file-details"
+          }
+        >
+          {files.map((file, index) => (
+            <li key={index} className="file-detail-item">
+              <div>
+                <Image
+                  src="/icons/actions/file/State=Default.svg"
+                  width={25}
+                  height={25}
+                  className="img-container"
+                  alt="Uploaded file"
+                />
+                <span className="text-white">{file.path}</span>
+              </div>
+              <button
+                className="remove-button"
+                onClick={() => handleRemove(file)}
+              >
+                x
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
