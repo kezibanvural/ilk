@@ -1,0 +1,34 @@
+@use "../../../../styles/variables.scss" as v;
+
+.dropzone-container{
+    height: 0;
+
+    .dropzone {
+
+        img{
+
+            &.attach-icon{
+                cursor: pointer;
+                position: absolute;
+                top: -67px;
+                left: 18px;
+            }
+        }
+    }
+
+    .file-details{
+        background-color: v.$color-blue2;
+        padding: 0.5rem;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column-reverse;
+
+        .file-detail-item{
+            // position: absolute;
+            display: block;
+
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+    }
+}

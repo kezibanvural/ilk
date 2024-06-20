@@ -306,20 +306,23 @@
                 }
     
                 button{
-                    background: transparent;
-                    border: none;
-                    outline: none;
-                    position: absolute;
-                    right: 19.67px;
-                    bottom: 15px;
-                    transition: all 0.1s linear;
 
-                    @media(max-width:576px){
-                        bottom: 10px;
-                    }
+                    &.submit-btn{
+                        background: transparent;
+                        border: none;
+                        outline: none;
+                        position: absolute;
+                        right: 19.67px;
+                        top: 17px;
+                        transition: all 0.1s linear;
     
-                    &:active{
-                        transform: scale(0.9);
+                        @media(max-width:576px){
+                            bottom: 10px;
+                        }
+        
+                        &:active{
+                            transform: scale(0.9);
+                        }
                     }
                 }
             }
