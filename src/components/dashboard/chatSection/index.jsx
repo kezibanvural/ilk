@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./style.scss";
 import Image from "next/image";
-import {marked} from "marked"; 
+import { marked } from "marked";
 import DOMPurify from "dompurify";
 import AttachmentFile from "../common/attach-file";
 
@@ -11,7 +11,7 @@ const DashboardAIChatSection = () => {
   const [inputValue, setInputValue] = useState("");
   const [apiData, setApiData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [copyClipboard, setCopyClipboard] = useState(false)
+  const [copyClipboard, setCopyClipboard] = useState(false);
   const chatSectionRef = useRef(null);
   const textareaRef = useRef(null);
 
@@ -32,8 +32,10 @@ const DashboardAIChatSection = () => {
     try {
       const response = await fetch(url, options);
       const data = await response.json();
-      const sanitizedHtml = DOMPurify.sanitize(marked(data?.answer?.result || ""));
-    console.log("sanitizedHtml",sanitizedHtml);
+      const sanitizedHtml = DOMPurify.sanitize(
+        marked(data?.answer?.result || "")
+      );
+      console.log("sanitizedHtml", sanitizedHtml);
       setApiData((prevData) => [...prevData, data]);
       setInputValue("");
     } catch (error) {
@@ -43,7 +45,6 @@ const DashboardAIChatSection = () => {
     }
   };
 
-
   useEffect(() => {
     if (chatSectionRef.current) {
       chatSectionRef.current.scrollTop = chatSectionRef.current.scrollHeight;
@@ -51,7 +52,7 @@ const DashboardAIChatSection = () => {
   }, [apiData, loading]);
 
   const autoHeight = (elem) => {
-    elem.style.height = '1px';
+    elem.style.height = "1px";
     elem.style.height = `${elem.scrollHeight}px`;
   };
 
@@ -94,7 +95,10 @@ const DashboardAIChatSection = () => {
   return (
     <div className="chat-container gap-4">
       {chat ? (
-        <div className="chat-section w-100 h-100 container" ref={chatSectionRef}>
+        <div
+          className="chat-section w-100 h-100 container"
+          ref={chatSectionRef}
+        >
           {apiData?.map((item, index) => (
             <div key={index} className="row w-100 mb-2 mb-md-5">
               <div className="col-0 col-md-1 d-none d-md-block">
@@ -118,18 +122,42 @@ const DashboardAIChatSection = () => {
                 <div className="separator"></div>
               </div>
               <div className="col-0 col-md-1 d-none d-md-block"></div>
-              <div className={`col-12 col-md-10 code-column code-column-${index}`}>
+              <div
+                className={`col-12 col-md-10 code-column code-column-${index}`}
+              >
                 <div
-                  className={DOMPurify.sanitize(marked(item?.answer?.result || "")).includes("<code") ? "code-block" : ""}
-                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(marked(item?.answer?.result || "")) }}
+                  className={
+                    DOMPurify.sanitize(
+                      marked(item?.answer?.result || "")
+                    ).includes("<code")
+                      ? "code-block"
+                      : ""
+                  }
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(
+                      marked(item?.answer?.result || "")
+                    ),
+                  }}
                 ></div>
-                {DOMPurify.sanitize(marked(item?.answer?.result || "")).includes("<code") && (
+                {DOMPurify.sanitize(
+                  marked(item?.answer?.result || "")
+                ).includes("<code") && (
                   <div className="copy-button">
                     <button onClick={() => handleCopyClick(index)}>
                       {copyClipboard ? (
-                        <Image src="/icons/actions/copy/copied-icon.svg" width={24} height={24} alt="copied-icon" />
+                        <Image
+                          src="/icons/actions/copy/copied-icon.svg"
+                          width={24}
+                          height={24}
+                          alt="copied-icon"
+                        />
                       ) : (
-                        <Image src="/icons/actions/copy/copy-icon.svg" width={24} height={24} alt="copy-icon" />
+                        <Image
+                          src="/icons/actions/copy/copy-icon.svg"
+                          width={24}
+                          height={24}
+                          alt="copy-icon"
+                        />
                       )}
                       <span>Copy</span>
                     </button>
@@ -210,12 +238,18 @@ const DashboardAIChatSection = () => {
           </div>
         </>
       )}
-      <form className="chat-input" onSubmit={(e) => { e.preventDefault(); handleChat(); }}>
-        <div>
-        <AttachmentFile/>
+      <form
+        className="chat-input"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleChat();
+        }}
+      >
+        <div className="textarea-container">
+          <AttachmentFile />
           <textarea
             ref={textareaRef}
-            style={{ overflow: 'hidden' }}
+            style={{ overflow: "hidden" }}
             rows={1}
             className="form-control text-input"
             data-text="Message"
@@ -234,7 +268,7 @@ const DashboardAIChatSection = () => {
               />
             </button>
           ) : (
-            <button type="submit"  className="submit-btn">
+            <button type="submit" className="submit-btn">
               <Image
                 src="/icons/ui/dropdown/State=Default.svg"
                 width={28}
@@ -245,7 +279,8 @@ const DashboardAIChatSection = () => {
           )}
         </div>
         <small>
-          Lmxai may occasionally produce incorrect information. Please double-check before using the information.
+          Lmxai may occasionally produce incorrect information. Please
+          double-check before using the information.
         </small>
       </form>
     </div>
