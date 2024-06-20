@@ -5,11 +5,14 @@ import "./style.scss";
 
 const AttachmentFile = () => {
   const [files, setFiles] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleUpload = (acceptedFiles) => {
     console.log("logging drop/selected files", acceptedFiles);
     // fake request to upload file
     const url = "https://api.escuelajs.co/api/v1/files/upload";
+
+    setLoading(true); // Start loading spinner
 
     acceptedFiles.forEach((file) => {
       const formData = new FormData();
@@ -30,6 +33,9 @@ const AttachmentFile = () => {
         })
         .catch((error) => {
           console.error(error);
+        })
+        .finally(() => {
+          setLoading(false); // Stop loading spinner after upload is done
         });
     });
   };
@@ -39,16 +45,14 @@ const AttachmentFile = () => {
   };
 
   console.log("files", files);
-
-  const fileDetailsHeight = files.length * 50 + 150;
-
+  
   return (
     <div className="dropzone-container">
       <Dropzone
         onDrop={handleUpload}
         accept="image/*"
         minSize={1024}
-        maxSize={3072000}
+        maxSize={11000000}
         multiple
       >
         {({
@@ -82,12 +86,16 @@ const AttachmentFile = () => {
           );
         }}
       </Dropzone>
+
       <div className="list-container">
         <ul
-          className={
-            files.length === 0 ? "file-details d-none" : "file-details"
-          }
+          className="file-details"
         >
+          {loading && (
+            <li className="placeholder-glow py-3">
+              <span className="placeholder col-12 rounded-3 bg-light"></span>
+            </li>
+          )}
           {files.map((file, index) => (
             <li key={index} className="file-detail-item">
               <div>
@@ -104,7 +112,13 @@ const AttachmentFile = () => {
                 className="remove-button"
                 onClick={() => handleRemove(file)}
               >
-                x
+                <Image
+                  src="/icons/ui/icons/State=Default,Name=Clear.svg"
+                  width={20}
+                  height={20}
+                  className="img-container"
+                  alt="Uploaded file"
+                />
               </button>
             </li>
           ))}
