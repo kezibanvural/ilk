@@ -75,7 +75,7 @@ const DashboardAIChatSection = () => {
   };
 
   const handleCopyClick = (index) => {
-    const codeBlocks = document.querySelectorAll(`.code-column-${index} code`);
+    const codeBlocks = document.querySelectorAll(`.code-column-${index} pre code[class^="language-"]`);
     let codeText = "";
     codeBlocks.forEach((block) => {
       codeText += block.innerText + "\n";
@@ -120,25 +120,6 @@ const DashboardAIChatSection = () => {
                   />
                 </div>
                 <div className="separator"></div>
-              </div>
-              <div className="col-0 col-md-1 d-none d-md-block"></div>
-              <div
-                className={`col-12 col-md-10 code-column code-column-${index}`}
-              >
-                <div
-                  className={
-                    DOMPurify.sanitize(
-                      marked(item?.answer?.result || "")
-                    ).includes("<code")
-                      ? "code-block"
-                      : ""
-                  }
-                  dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(
-                      marked(item?.answer?.result || "")
-                    ),
-                  }}
-                ></div>
                 {DOMPurify.sanitize(
                   marked(item?.answer?.result || "")
                 ).includes("<code") && (
@@ -159,10 +140,31 @@ const DashboardAIChatSection = () => {
                           alt="copy-icon"
                         />
                       )}
-                      <span>Copy</span>
+                      <span>Copy Code</span>
                     </button>
                   </div>
                 )}
+              </div>
+              <div className="col-0 col-md-1 d-none d-md-block"></div>
+              <div
+                className={`col-12 col-md-10 code-column code-column-${index}`}
+              >
+                
+                <div
+                  className={
+                    DOMPurify.sanitize(
+                      marked(item?.answer?.result || "")
+                    ).includes("<code")
+                      ? "code-block"
+                      : ""
+                  }
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(
+                      marked(item?.answer?.result || "")
+                    ),
+                  }}
+                ></div>
+
               </div>
             </div>
           ))}
