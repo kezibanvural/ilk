@@ -155,6 +155,10 @@
       width: 110%;
       height: 60%;
 
+      @media(max-height:768px){
+        height: 125%;
+      }
+
 
       @media(max-width:500px){
         width: 100%;
@@ -398,6 +402,10 @@
     gap: 10px;
     overflow: hidden;
     height: 11%;
+
+    @media(max-height:768px){
+      height: 18%;
+    }
     
     button {
       width: 60px;

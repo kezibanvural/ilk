@@ -11,7 +11,7 @@ const DashboardSidebar = () => {
 
   useEffect(() => {
     setScreenWidth(window.innerWidth);
-    setCloseSidebar(screenWidth > 768 ? true : false);
+    setCloseSidebar(screenWidth > 992 ? true : false);
   }, [screenWidth]);
 
   const handleCloseBtn = () => {
