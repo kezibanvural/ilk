@@ -125,7 +125,6 @@
                         width: 100%;
                         height: 2px;
                     }
-
                     span{
                         max-width: 475px;
                         word-wrap: break-word;
@@ -181,7 +180,35 @@
 
                     }
                 
-            }
+                }
+                .copy-button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    
+                    button{
+                        border: none;
+                        border-bottom: 1px solid v.$color-blue4;
+                        background-color: v.$color-blue2;
+                        width: 150px;
+                        height: 30px;
+                        border-radius:0 0 10px 10px;
+                        color: white;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 0.3rem;
+        
+                        &:hover{
+                            background-color: v.$color-blue4;
+                        }
+                    
+                        &:active{
+                            background-color: v.$color-blue1;
+                        }
+                    }
+                }
+
         }
 
         .code-column{
@@ -198,43 +225,19 @@
     
                     code{
                         background-color: v.$color-blue2;
-                        border-radius: 15px 15px 0 15px;
+                        border-radius:15px;
                         padding: 1rem;
                         display: block;
                     }
 
                     & ~ p {
                         margin-top: 2rem;
+
+                        code{
+                            color: v.$color-blue1
+                        }
                     }
                 };
-            }
-            .copy-button {
-                    
-                button{
-                    margin-top: 0.5rem;
-                    border: none;
-                    border-bottom: 1px solid v.$color-blue4;
-                    background-color: v.$color-blue2;
-                    width: 100px;
-                    height: 30px;
-                    border-radius: 0 0 10px 10px;
-                    color: white;
-                    position: absolute;
-                    bottom: -31px;
-                    right: 12px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 0.3rem;
-    
-                    &:hover{
-                        background-color: v.$color-blue4;
-                    }
-                
-                    &:active{
-                        background-color: v.$color-blue1;
-                    }
-                }
             }
         }
     }
