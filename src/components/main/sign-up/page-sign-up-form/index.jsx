@@ -7,8 +7,8 @@ import "./style.scss";
 import SignUpButton from "../../common/buttons/sign-up";
 import Link from "next/link";
 import Image from "next/image";
-import eyeDefault from '/public/icons/actions/eye/State=Default.svg';
-import eyeDisabled from '/public/icons/actions/eye/State=Dissabled.svg';
+import eyeDefault from "/public/icons/actions/eye/State=Default.svg";
+import eyeDisabled from "/public/icons/actions/eye/State=Dissabled.svg";
 import SocialConnectionButton from "../../common/buttons/social-connect-button";
 
 const SignUpPageForm = ({ searchParams }) => {
@@ -64,7 +64,7 @@ const SignUpPageForm = ({ searchParams }) => {
               className="passwordEye"
               width={25}
               height={17}
-              alt='eyeOpened-icon'
+              alt="eyeOpened-icon"
               onClick={() => setShowPassword((prev) => !prev)}
             />
           ) : (
@@ -74,19 +74,36 @@ const SignUpPageForm = ({ searchParams }) => {
               width={25}
               height={17}
               size={20}
-              alt='eyeClosed-icon'
+              alt="eyeClosed-icon"
               onClick={() => setShowPassword((prev) => !prev)}
             />
           )}
         </div>
+        <div className="form-check">
+          <input
+            className={`form-check-input ${
+              state?.errors?.privacyPolicy ? "is-invalid" : ""
+            }`}
+            type="checkbox"
+            id="privacyPolicy"
+            name="privacyPolicy"
+          />
+          <label className="form-check-label" htmlFor="privacyPolicy">
+            I understand and agree to LearningMatrixAI&apos;s
+            <Link href="/privacy-policy" target="_blank">
+              Privacy Policy
+            </Link>
+          </label>
+          <div className="invalid-feedback">{state?.errors?.privacyPolicy}</div>
+        </div>
         <SignUpButton />
       </form>
       <div className="seperator">
-          <span>or</span>
+        <span>or</span>
       </div>
       <div className="social-connection">
-          <SocialConnectionButton title="Google" status="up"/>
-          <SocialConnectionButton title="Facebook" status="up"/>
+        <SocialConnectionButton title="Google" status="up" />
+        <SocialConnectionButton title="Facebook" status="up" />
       </div>
       <div className="text-center mt-3">
         <small>
