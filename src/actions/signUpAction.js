@@ -16,12 +16,14 @@ const FormSchemaPage = Yup.object({
     email:Yup.string()
         .email("It must be email address")
         .required("Required"),
-    password: Yup.string()
+    password:Yup.string()
         .min(8, "Password must be at least 8 characters long.")
         .matches(/[a-z]/, "Password must contain at least one lowercaseletter.")
         .matches(/[A-Z]/, "Password must contain at least one uppercaseletter.")
         .matches(/[.,?/\\\-]/, "Password must contain at least one specialcharacter (., ?, -, /).")
-        .required("Required")
+        .required("Required"),
+    privacyPolicy:Yup.string()
+        .required("You must agree before submitting.")
 });
 
 export const signUpMainAction = async (prevState, formData) =>{
