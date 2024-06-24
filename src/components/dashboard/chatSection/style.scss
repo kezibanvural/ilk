@@ -220,7 +220,40 @@
                     }
                 }
 
-        }
+                @media(max-width:768px){
+                    position: relative;
+                    overflow-y: visible;
+
+                    &::before{
+                        content: "";
+                        background-image: url("../../../../public/icons//ui/avatar/State=Default.png");
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-size: cover;
+                        width: 30px;
+                        height: 30px;
+                        position: absolute;
+                        top: 15px;
+                        left: -0px;
+                        z-index: 1000;
+                        
+                    }
+                }
+                @media(max-width:576px){
+                    &::before{
+                        width: 25px;
+                        height: 25px;
+                    }
+                }
+
+                @media(max-width:400px){
+                    &::before{
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+
+            }
 
         .code-column{
             position: relative;

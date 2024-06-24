@@ -30,6 +30,19 @@
     padding: 1rem;
   }
 
+  @media(max-width:576px){
+    padding: 0.5rem;
+
+    .container{
+      padding: 0.8rem;
+    }
+
+  }
+  @media(max-width:400px){
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .dashboard-content{
     height: 90%;
     width: 100%;
