@@ -64,6 +64,10 @@
         position: absolute;
         left: 5px;
         bottom: -20px;
+
+        @media(max-width:576px){
+          font-size: 12px;
+        }
       }
     }
 
@@ -72,6 +76,10 @@
       position: relative;
 
       label {
+
+        @media(max-width:576px){
+          font-size: 14px;
+        }
         a {
           text-decoration: none;
           margin-left: 0.5rem;
@@ -91,6 +99,10 @@
         position: absolute;
         left: 5px;
         bottom: -20px;
+
+        @media(max-width:576px){
+          font-size: 12px;
+        }
       }
     }
 

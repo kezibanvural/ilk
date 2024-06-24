@@ -23,7 +23,7 @@ const FormSchemaPage = Yup.object({
         .matches(/[.,?/\\\-]/, "Password must contain at least one specialcharacter (., ?, -, /).")
         .required("Required"),
     privacyPolicy:Yup.string()
-        .required("You must agree before submitting.")
+        .required("You must agree before signing up.")
 });
 
 export const signUpMainAction = async (prevState, formData) =>{
