@@ -5,7 +5,15 @@ $color-blue4: #0C63E7;
 $color-blue5: #0D41E1;
 $color-blue6: #07247B;
 $color-blue7: #1976D2;
-$gradient-dropdown:linear-gradient(0deg, #1CC7E3 0%, rgba(255,255,255,0.6));
+$color-primary:#E3E023;
+$color-primary2:#C2C200 ;
+$color-primary3:#A1A100;
+$color-primary4:#F5DF21;
+$color-secondary1:#FDFDFD;
+$color-secondary2:#CCCCCC;
+$color-secondary3:#111111;
+$gradient-primary:linear-gradient(180deg, #FFFFFF 0%, rgba(227,224,35,0.1));
+$gradient-dropdown:linear-gradient(180deg, #FFFFFF 0%, rgba(227,224,35,0.6));
 $vendors: ("", "-webkit-", "-moz-", "-ms-", "-o-");
 
 // Bootstrap variables

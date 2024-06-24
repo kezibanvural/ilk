@@ -113,7 +113,7 @@ const DashboardAIChatSection = () => {
                 <div className="mb-2">
                   <span>{item?.answer?.query}</span>
                   <Image
-                    src="/icons/ui/icons/State=Default,Name=Edit.svg"
+                    src="/icons/ui/icons/State=Default,Name=Edit-chatSection.svg"
                     width={24}
                     height={24}
                     alt="pencil"
@@ -182,7 +182,7 @@ const DashboardAIChatSection = () => {
                 <div className="mb-2 placeholder-glow">
                   <span className="placeholder col-5 rounded-3"></span>
                   <Image
-                    src="/icons/ui/icons/State=Default,Name=Edit.svg"
+                    src="/icons/ui/icons/State=Default,Name=Edit-chatSection.svg"
                     width={24}
                     height={24}
                     alt="pencil"
@@ -211,7 +211,7 @@ const DashboardAIChatSection = () => {
             <div className="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
               <div className="col">
                 <Image
-                  src="/icons/actions/file/State=Default.svg"
+                  src="/icons/actions/file/State=Default-chatSection.svg"
                   height={24}
                   width={24}
                   alt="file-icon"
@@ -220,7 +220,7 @@ const DashboardAIChatSection = () => {
               </div>
               <div className="col">
                 <Image
-                  src="/icons/actions/file/State=Default.svg"
+                  src="/icons/actions/file/State=Default-chatSection.svg"
                   height={24}
                   width={24}
                   alt="file-icon"
@@ -229,7 +229,7 @@ const DashboardAIChatSection = () => {
               </div>
               <div className="col">
                 <Image
-                  src="/icons/actions/file/State=Default.svg"
+                  src="/icons/actions/file/State=Default-chatSection.svg"
                   height={24}
                   width={24}
                   alt="file-icon"
