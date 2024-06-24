@@ -89,7 +89,7 @@ const SignUpPageForm = ({ searchParams }) => {
             name="privacyPolicy"
           />
           <label className="form-check-label" htmlFor="privacyPolicy">
-            I understand and agree to LearningMatrixAI&apos;s
+            I understand and agree to Learning Matrix AI&apos;s
             <Link href="/privacy-policy" target="_blank">
               Privacy Policy
             </Link>
