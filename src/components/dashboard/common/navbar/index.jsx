@@ -8,7 +8,7 @@ const DashboardNavbar = () => {
     <div className='dashboard-navbar'>
         <div className='school-name'>
         <Image src="/logos/Size=Small.svg"  width={66} height={66} alt='logo'/>
-        <h1>Learning Matrix</h1>
+        <h1>lk.ai</h1>
         </div>
         <DashboardNavbarUserSection/>
     </div>
