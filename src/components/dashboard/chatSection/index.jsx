@@ -118,14 +118,14 @@ const DashboardAIChatSection = () => {
                 className="copy-button"
                 onClick={() => handleCopyClick(codeText)}
               >
-                <img
+                <Image
                   src={
                     copyClipboard
                       ? "/icons/actions/copy/copied-icon.svg"
                       : "/icons/actions/copy/copy-icon.svg"
                   }
-                  width="24"
-                  height="24"
+                  width={24}
+                  height={24}
                   alt={copyClipboard ? "copied-icon" : "copy-icon"}
                 />
                 <span>Copy</span>
