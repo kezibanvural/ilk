@@ -103,7 +103,7 @@ const DashboardAIChatSection = () => {
             <div key={index} className="row w-100 mb-2 mb-md-5">
               <div className="col-0 col-md-1 d-none d-md-block">
                 <Image
-                  src="/icons/ui/avatar/State=Default.png"
+                  src="/icons/ui/avatar/chat-section-avatar-icon.png"
                   width={55}
                   height={55}
                   alt="user-avatar"
@@ -172,13 +172,13 @@ const DashboardAIChatSection = () => {
             <div className="row w-100 mb-5">
               <div className="col-0 col-md-1 d-none d-md-block">
                 <Image
-                  src="/icons/ui/avatar/State=Default.png"
+                  src="/icons/ui/avatar/chat-section-avatar-icon.png"
                   width={55}
                   height={55}
                   alt="user-avatar"
                 />
               </div>
-              <div className="col-12 col-md-10 answer-header">
+              <div className="col-12 col-md-10 answer-header ms-5 ms-md-0">
                 <div className="mb-2 placeholder-glow">
                   <span className="placeholder col-5 rounded-3"></span>
                   <Image
@@ -191,7 +191,7 @@ const DashboardAIChatSection = () => {
                 <div className="separator"></div>
               </div>
               <div className="col-0 col-md-1 d-none d-md-block placeholder-glow "></div>
-              <div className="col-12 col-md-10 placeholder-glow">
+              <div className="col-12 col-md-10 placeholder-glow ms-5">
                 <span className="placeholder col-10 rounded-3"></span>
                 <span className="placeholder col-10 rounded-3"></span>
                 <span className="placeholder col-6 rounded-3"></span>
