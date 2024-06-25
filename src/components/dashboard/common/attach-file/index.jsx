@@ -106,7 +106,7 @@ const AttachmentFile = () => {
                   className="img-container"
                   alt="Uploaded file"
                 />
-                <span className="text-white">{file.path}</span>
+                <span>{file.path}</span>
               </div>
               <button
                 className="remove-button"
