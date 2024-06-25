@@ -20,7 +20,7 @@
       }
   
       span {
-        background-color: v.$color-primary;
+        background-color: v.$color-primary4;
         height: 4px;
         border-radius: 20px;
         display: flex;
@@ -149,7 +149,7 @@
     .sidebar-bottom {
       flex-direction: column;
       width: 110%;
-      height: 60%;
+      height: 63%;
 
       @media(max-height:768px){
         height: 125%;
@@ -176,7 +176,7 @@
   button {
 
     &.new-chat {
-      background-color: v.$color-primary;
+      background-color: v.$color-primary4;
       width: 100%;
       height: 50px;
       border-radius: 30px;
@@ -195,7 +195,7 @@
       }
 
       &:hover {
-        background-color: v.$color-primary3;
+        background-color: v.$color-primary;
       }
 
       &:active {
