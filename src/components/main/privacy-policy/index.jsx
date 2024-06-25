@@ -28,7 +28,7 @@ const PrivacyPolicyCard = () => {
     <h2>5. Data Security</h2>
     <p>We employ commercially acceptable methods and security standards to protect your data. However, complete security of information transmitted over the internet cannot be guaranteed.</p>
     
-    <h2>6. Children's Privacy</h2>
+    <h2>6. Children&apos;s Privacy</h2>
     <p>Our services are not directed to children under 13, and we do not knowingly collect such information.</p>
     
     <h2>7. Changes to Privacy Policy</h2>
