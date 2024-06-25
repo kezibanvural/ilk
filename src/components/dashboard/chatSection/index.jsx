@@ -106,10 +106,14 @@ const DashboardAIChatSection = () => {
         const codeText = codeBlocks[idx].innerText;
         elements.push(
           <div key={`code-${index}-${idx}`} className="code-block">
+            
             <pre>
               <code dangerouslySetInnerHTML={{ __html: codeBlocks[idx].innerHTML }} />
             </pre>
             <div className="code-button-div">
+            <div className="code-language">
+              {codeBlocks[0].className.slice(9)}
+            </div>
               <button
                 className="copy-button"
                 onClick={() => handleCopyClick(codeText)}
@@ -143,7 +147,7 @@ const DashboardAIChatSection = () => {
           ref={chatSectionRef}
         >
           {apiData?.map((item, index) => (
-            <div key={index} className="row w-100 mb-2 mb-md-5">
+            <div key={index} className="row w-100 mb-2 mb-md-2">
               <div className="col-0 col-md-1 d-none d-md-block">
                 <Image
                   src="/icons/ui/avatar/chat-section-avatar-icon.png"
