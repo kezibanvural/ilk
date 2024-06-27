@@ -20,7 +20,7 @@ const DashboardAIChatSection = () => {
     setLoading(true);
     setChat(true);
 
-    const url = `http://144.76.185.151:5000/ask`;
+    const url = `https://5000-01hw0ajtd083fjct2wwgvbjt3g.cloudspaces.litng.ai/ask`;
     const options = {
       method: "POST",
       headers: {
@@ -28,13 +28,14 @@ const DashboardAIChatSection = () => {
       },
       body: JSON.stringify({ question: inputValue }),
     };
-
     try {
       const response = await fetch(url, options);
       const data = await response.json();
+      console.log("data",data);
       const sanitizedHtml = DOMPurify.sanitize(
         marked(data?.answer?.result || "")
       );
+      
       setApiData((prevData) => [...prevData, { ...data, sanitizedHtml }]);
     } catch (error) {
       console.error(error);
