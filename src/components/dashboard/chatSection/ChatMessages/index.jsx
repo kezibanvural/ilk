@@ -85,7 +85,7 @@ const ChatMessages = ({ apiData, loading, copyClipboard, handleCopyClick }) => {
               alt="user-avatar"
             />
           </div>
-          <div className="col-11 col-md-10 answer-header">
+          <div className="col-11 col-md-10 answer-header p-0">
             <div className="mb-2">
               <span>{item?.answer?.query}</span>
               <Image
