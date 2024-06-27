@@ -44,15 +44,12 @@ const AttachmentFile = () => {
     setFiles((prevFiles) => prevFiles.filter((file) => file !== fileToRemove));
   };
 
-  console.log("files", files);
-  
+  // console.log("files", files);
+
   return (
     <div className="dropzone-container">
       <Dropzone
         onDrop={handleUpload}
-        accept="image/*"
-        minSize={1024}
-        maxSize={11000000}
         multiple
       >
         {({
@@ -88,9 +85,7 @@ const AttachmentFile = () => {
       </Dropzone>
 
       <div className="list-container">
-        <ul
-          className="file-details"
-        >
+        <ul className="file-details">
           {loading && (
             <li className="placeholder-glow py-3">
               <span className="placeholder col-12 rounded-3 bg-light"></span>
