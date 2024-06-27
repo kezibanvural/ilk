@@ -20,7 +20,7 @@ const ChatOptions = () => (
           width={24}
           alt="file-icon"
         />
-        <p>Look For History Of The Rubik's Cube</p>
+        <p>Look For History Of The Rubik&apos;s Cube</p>
       </div>
       <div className="col">
         <Image
