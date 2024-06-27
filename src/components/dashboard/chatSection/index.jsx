@@ -20,7 +20,7 @@ const DashboardAIChatSection = () => {
     setLoading(true);
     setChat(true);
 
-    const url = `https://5000-01hw0ajtd083fjct2wwgvbjt3g.cloudspaces.litng.ai/ask`;
+    const url = `http://144.76.185.151:5000/ask`;
     const options = {
       method: "POST",
       headers: {
