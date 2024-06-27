@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
-import DOMPurify from "dompurify";
-import { marked } from "marked";
+import hljs from "highlight.js";
+
 
 const ChatMessages = ({ apiData, loading, copyClipboard, handleCopyClick }) => {
   const chatSectionRef = useRef(null);
@@ -12,6 +12,12 @@ const ChatMessages = ({ apiData, loading, copyClipboard, handleCopyClick }) => {
     }
   }, [apiData, loading]);
 
+  useEffect(() => {
+    document.querySelectorAll("pre code").forEach((block) => {
+      hljs.highlightElement(block);
+    });
+  }, [apiData, loading]);
+
   const renderCodeBlock = (html, index) => {
     const div = document.createElement("div");
     div.innerHTML = html;
@@ -20,7 +26,7 @@ const ChatMessages = ({ apiData, loading, copyClipboard, handleCopyClick }) => {
       div.querySelectorAll("pre code[class^='language-']")
     );
     const textBlocks = Array.from(div.querySelectorAll("p"));
-    
+
     const elements = [];
     textBlocks.forEach((textBlock, idx) => {
       elements.push(
@@ -29,16 +35,19 @@ const ChatMessages = ({ apiData, loading, copyClipboard, handleCopyClick }) => {
 
       if (codeBlocks[idx]) {
         const codeText = codeBlocks[idx].innerText;
+        hljs.highlightBlock(codeBlocks[idx]);  // Highlight.js ile renklendirme
         elements.push(
           <div key={`code-${index}-${idx}`} className="code-block">
-            
             <pre>
-              <code dangerouslySetInnerHTML={{ __html: codeBlocks[idx].innerHTML }} />
+              <code
+                className={codeBlocks[idx].className}
+                dangerouslySetInnerHTML={{ __html: codeBlocks[idx].innerHTML }}
+              />
             </pre>
             <div className="code-button-div">
-            <div className="code-language">
-              {codeBlocks[0].className.slice(9)}
-            </div>
+              <div className="code-language">
+                {codeBlocks[0].className.slice(9).slice(0, -4)}
+              </div>
               <button
                 className="copy-button"
                 onClick={() => handleCopyClick(codeText)}

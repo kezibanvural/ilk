@@ -1,5 +1,6 @@
 @use "./variables.scss" as v;
 @import "bootstrap/scss/bootstrap";
+@import 'highlight.js/styles/monokai-sublime.css';
 
 //LOADING STYLE
 @keyframes wave {

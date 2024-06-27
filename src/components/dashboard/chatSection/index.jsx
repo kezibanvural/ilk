@@ -8,6 +8,7 @@ import ChatHeader from "./chatHeader";
 import ChatOptions from "./ChatOptions";
 import ChatInput from "./ChatInput";
 
+
 const DashboardAIChatSection = () => {
   const [chat, setChat] = useState(false);
   const [apiData, setApiData] = useState([]);
