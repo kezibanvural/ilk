@@ -54,7 +54,7 @@ const ChatSidebar = () => {
           {closeSidebar ? (
             <form>
               <div className="input-group mb-3">
-                <div className="input-group-prepend">
+                <div className="input-group-prepend p-0">
                   <span className="input-group-text" id="basic-addon1">
                     <Image
                       src="/icons/actions/magnifyingGlass/State=Default.svg"

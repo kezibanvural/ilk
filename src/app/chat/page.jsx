@@ -2,7 +2,7 @@ import DashboardAIChatSection from '@/components/chat/chatSection';
 import React from 'react'
 
 export const metadata = {
-    title: "Dashboard",
+    title: "AI Chat",
     description: "Learning Matrix AI Power in Education",
   };
 
