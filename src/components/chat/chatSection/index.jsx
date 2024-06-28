@@ -7,7 +7,7 @@ import ChatMessages from "./ChatMessages";
 import ChatOptions from "./ChatOptions";
 import ChatInput from "./ChatInput";
 
-const DashboardAIChatSection = () => {
+const ChatAIChatSection = () => {
   const [chat, setChat] = useState(false);
   const [apiData, setApiData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -79,4 +79,4 @@ const DashboardAIChatSection = () => {
   );
 };
 
-export default DashboardAIChatSection;
+export default ChatAIChatSection;

@@ -1,4 +1,4 @@
-import DashboardAIChatSection from '@/components/dashboard/chatSection';
+import DashboardAIChatSection from '@/components/chat/chatSection';
 import React from 'react'
 
 export const metadata = {
