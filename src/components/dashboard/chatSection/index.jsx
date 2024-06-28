@@ -4,9 +4,9 @@ import "./style.scss";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
 import ChatMessages from "./ChatMessages";
-import ChatHeader from "./ChatHeader";
 import ChatOptions from "./ChatOptions";
 import ChatInput from "./ChatInput";
+import ChatHeader from "./ChatHeader";
 
 
 const DashboardAIChatSection = () => {
