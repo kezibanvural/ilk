@@ -126,22 +126,23 @@
             display: flex;
             align-items: flex-end;
             justify-content: space-between;
-            background-color: rgba(204, 204, 204,0.2);
+            // background-color: rgba(204, 204, 204,0.2);
             padding: 1rem;
             margin-bottom: 0!important;
-            border-radius: 10px;
-            border-bottom:2px solid v.$color-primary4 ;
+            // border-radius: 10px;
+            // border-bottom:2px solid v.$color-primary4 ;
 
             @media(max-width:576px){
-              margin-bottom: 2rem!important;
+              // margin-bottom: 2rem!important;
             }
           }
 
-          // &.separator {
-          //   background: linear-gradient(0deg, v.$color-primary4 100%, v.$color-primary);
-          //   width: 100%;
-          //   height: 2px;
-          // }
+          &.separator {
+            background: linear-gradient(0deg, v.$color-primary4 100%, v.$color-primary);
+            width: 100%;
+            height: 2px;
+            margin-bottom: 1rem;
+          }
           span {
             max-width: 475px;
             word-wrap: break-word;
@@ -200,19 +201,19 @@
         position: relative;
         overflow-y: visible;
 
-        // &::before {
-        //   content: "";
-        //   background-image: url("../../../../public/icons/ui/avatar/chat-section-avatar-icon.png");
-        //   background-repeat: no-repeat;
-        //   background-position: center;
-        //   background-size: cover;
-        //   width: 30px;
-        //   height: 30px;
-        //   position: absolute;
-        //   top: 15px;
-        //   left: -0px;
-        //   z-index: 1000;
-        // }
+        &::before {
+          content: "";
+          background-image: url("../../../../public/icons/ui/avatar/chat-section-avatar-icon.png");
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          width: 30px;
+          height: 30px;
+          position: absolute;
+          top: 15px;
+          left: -0px;
+          z-index: 1000;
+        }
       }
       @media (max-width: 576px) {
         &::before {
@@ -231,10 +232,10 @@
 
     .code-column {
       position: relative;
-      margin-bottom: 3rem;
-      background-color: rgba(227,224,35,0.3);
-      padding: 2rem 1rem;
-      border-radius: 15px;
+      margin-bottom: 2rem;
+      // background-color: rgba(227,224,35,0.3);
+      // padding: 2rem 1rem;
+      // border-radius: 15px;
 
       p:last-child{
         margin-top: 15px;

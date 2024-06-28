@@ -1,6 +1,6 @@
-import DashboardNavbar from "@/components/dashboard/common/navbar";
+import DashboardNavbar from "@/components/chat/common/navbar";
 import "../../styles/index.scss";
-import DashboardSidebar from "@/components/dashboard/common/sidebar";
+import DashboardSidebar from "@/components/chat/common/sidebar";
 import Spacer from "@/components/common/spacer/spacer";
 
 export const metadata = {
@@ -10,10 +10,10 @@ export const metadata = {
   
   export default function DashboardLayout({ children }) {
     return (
-      <section className="dashboard-section">
+      <section className="dashboardChat-section">
         <DashboardNavbar/>
         <Spacer height={10}/>
-        <div className="d-flex dashboard-content">
+        <div className="d-flex dashboardChat-content">
           <DashboardSidebar/>
           <div className="w-100">
             <Spacer height={25}/>

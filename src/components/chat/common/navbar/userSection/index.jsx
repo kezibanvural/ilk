@@ -4,7 +4,7 @@ import "./style.scss";
 import Image from "next/image";
 import Link from "next/link";
 
-const DashboardNavbarUserSection = () => {
+const ChatNavbarUserSection = () => {
   return (
     <div className="user-section">
       <div className="dropdown">
@@ -23,12 +23,12 @@ const DashboardNavbarUserSection = () => {
             </Link>
           </li>
           <li>
-            <Link className="dropdown-item" href="/dashboard">
+            <Link className="dropdown-item" href="/chat">
               <Image src="/icons/ui/avatar/user-icon.svg" width={20} height={20} alt="user-icon"/>
             </Link>
           </li>
           <li>
-            <Link className="dropdown-item" href="/dashboard">
+            <Link className="dropdown-item" href="/chat">
               <Image src="/icons/ui/icons/book-icon.svg" width={22} height={15.48} alt="book-icon"/>
             </Link>
           </li>
@@ -51,4 +51,4 @@ const DashboardNavbarUserSection = () => {
   );
 };
 
-export default DashboardNavbarUserSection;
+export default ChatNavbarUserSection;

@@ -5,7 +5,7 @@ import Image from "next/image";
 import history from "./history.json";
 import Link from "next/link";
 
-const DashboardSidebar = () => {
+const ChatSidebar = () => {
   const [screenWidth, setScreenWidth] = useState(0);
   const [closeSidebar, setCloseSidebar] = useState(true);
 
@@ -29,7 +29,7 @@ const DashboardSidebar = () => {
       </button>
       <div
         className={
-          closeSidebar ? "dashboard-sidebar" : "dashboard-sidebar closed-panel"
+          closeSidebar ? "chat-sidebar" : "chat-sidebar closed-panel"
         }
       >
         <div className="sidebar-top">
@@ -139,7 +139,7 @@ const DashboardSidebar = () => {
                               <li>
                                 <Link
                                   className="dropdown-item"
-                                  href="/dashboard"
+                                  href="/chat"
                                 >
                                   <Image
                                     src="/icons/ui/icons/State=Default,Name=Share.svg"
@@ -153,7 +153,7 @@ const DashboardSidebar = () => {
                               <li>
                                 <Link
                                   className="dropdown-item"
-                                  href="/dashboard"
+                                  href="/chat"
                                 >
                                   <Image
                                     src="/icons/ui/icons/State=Default,Name=Rename.svg"
@@ -167,7 +167,7 @@ const DashboardSidebar = () => {
                               <li>
                                 <Link
                                   className="dropdown-item"
-                                  href="/dashboard"
+                                  href="/chat"
                                 >
                                   <Image
                                     src="/icons/ui/icons/State=Default,Name=Archive.svg"
@@ -181,7 +181,7 @@ const DashboardSidebar = () => {
                               <li>
                                 <Link
                                   className="dropdown-item"
-                                  href="/dashboard"
+                                  href="/chat"
                                 >
                                   <Image
                                     src="/icons/ui/icons/State=Default,Name=Clear.svg"
@@ -249,7 +249,7 @@ const DashboardSidebar = () => {
                               <li>
                                 <Link
                                   className="dropdown-item"
-                                  href="/dashboard"
+                                  href="/chat"
                                 >
                                   <Image
                                     src="/icons/ui/icons/State=Default,Name=Share.svg"
@@ -263,7 +263,7 @@ const DashboardSidebar = () => {
                               <li>
                                 <Link
                                   className="dropdown-item"
-                                  href="/dashboard"
+                                  href="/chat"
                                 >
                                   <Image
                                     src="/icons/ui/icons/State=Default,Name=Rename.svg"
@@ -277,7 +277,7 @@ const DashboardSidebar = () => {
                               <li>
                                 <Link
                                   className="dropdown-item"
-                                  href="/dashboard"
+                                  href="/chat"
                                 >
                                   <Image
                                     src="/icons/ui/icons/State=Default,Name=Archive.svg"
@@ -291,7 +291,7 @@ const DashboardSidebar = () => {
                               <li>
                                 <Link
                                   className="dropdown-item"
-                                  href="/dashboard"
+                                  href="/chat"
                                 >
                                   <Image
                                     src="/icons/ui/icons/State=Default,Name=Clear.svg"
@@ -352,4 +352,4 @@ const DashboardSidebar = () => {
   );
 };
 
-export default DashboardSidebar;
+export default ChatSidebar;
