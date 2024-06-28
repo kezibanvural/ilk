@@ -6,8 +6,6 @@ import DOMPurify from "dompurify";
 import ChatMessages from "./ChatMessages";
 import ChatOptions from "./ChatOptions";
 import ChatInput from "./ChatInput";
-import ChatHeader from "./ChatHeader";
-
 
 const DashboardAIChatSection = () => {
   const [chat, setChat] = useState(false);
@@ -31,11 +29,11 @@ const DashboardAIChatSection = () => {
     try {
       const response = await fetch(url, options);
       const data = await response.json();
-      console.log("data",data);
+      console.log("data", data);
       const sanitizedHtml = DOMPurify.sanitize(
         marked(data?.answer?.result || "")
       );
-      
+
       setApiData((prevData) => [...prevData, { ...data, sanitizedHtml }]);
     } catch (error) {
       console.error(error);
@@ -67,7 +65,12 @@ const DashboardAIChatSection = () => {
         />
       ) : (
         <>
-          <ChatHeader />
+          <div className="chat-header">
+            <h1>
+              <p>Hi, lmxai!</p>
+              <p>How Can I Help You?</p>
+            </h1>
+          </div>
           <ChatOptions />
         </>
       )}
