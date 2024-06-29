@@ -395,6 +395,7 @@
           color: v.$color-secondary3;
           box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
           outline: none;
+          overflow-y: auto !important;
 
           &:active{
             border: 1px solid v.$color-primary4;
@@ -418,12 +419,12 @@
           }
 
           &::-webkit-scrollbar-thumb {
-            background: v.$color-secondary2;
+            background: v.$color-primary3;
             border-radius: 60px;
           }
 
           &::-webkit-scrollbar-track {
-            background: v.$color-primary3;
+            background: v.$color-secondary2;
             border-radius: 60px;
           }
 
