@@ -2,10 +2,10 @@ import { config } from "@/helpers/config";
 
 const API_URL = config.api.baseUrl;
 
-// TODO 
-export const login = (payload) => {
-	return fetch(`${API_URL}/user/login`, {
-		method: "post",
+export const register = (payload) => {
+    console.log("payload",payload);
+	return fetch(`${API_URL}/user/register/`, {
+		method: "POST",
 		body: JSON.stringify(payload),
 		headers: {
 			"Content-Type": "application/json",

@@ -25,14 +25,38 @@ const SignUpPageForm = ({ searchParams }) => {
         <div className="input-group">
           <input
             type="text"
-            placeholder="Your Name"
+            placeholder="Your First Name"
             className={`form-control rounded-3 ${
-              state?.errors?.name ? "is-invalid" : ""
+              state?.errors?.first_name ? "is-invalid" : ""
             }`}
-            name="name"
-            id="name"
+            name="first_name"
+            id="first_name"
           />
-          <div className="invalid-feedback">{state?.errors?.name}</div>
+          <div className="invalid-feedback">{state?.errors?.first_name}</div>
+        </div>
+        <div className="input-group">
+          <input
+            type="text"
+            placeholder="Your Last Name"
+            className={`form-control rounded-3 ${
+              state?.errors?.last_name ? "is-invalid" : ""
+            }`}
+            name="last_name"
+            id="last_name"
+          />
+          <div className="invalid-feedback">{state?.errors?.last_name}</div>
+        </div>
+        <div className="input-group">
+          <input
+            type="number"
+            placeholder="Student Number"
+            className={`form-control rounded-3 ${
+              state?.errors?.student_number ? "is-invalid" : ""
+            }`}
+            name="student_number"
+            id="student_number"
+          />
+          <div className="invalid-feedback">{state?.errors?.student_number}</div>
         </div>
         <div className="input-group">
           <input
@@ -96,6 +120,8 @@ const SignUpPageForm = ({ searchParams }) => {
           </label>
           <div className="invalid-feedback">{state?.errors?.privacyPolicy}</div>
         </div>
+        <input type="hidden" name="post_code" value="2923"/>
+        <input type="hidden" name="address" value="Krimpen aan den IJssel"/>
         <SignUpButton />
       </form>
       <div className="seperator">

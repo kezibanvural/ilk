@@ -1,5 +1,6 @@
 "use server";
 import { convertFormDataToJson, getYupErrors, response } from "@/helpers/formValidation";
+import { register } from "@/services/sign-up-service";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import * as Yup from "yup";
@@ -10,8 +11,17 @@ const FormSchemaMain = Yup.object({
         .required("Required"),
 });
 const FormSchemaPage = Yup.object({
-    name:Yup.string()
+    first_name:Yup.string()
         .min(2,"At least 2 characters.")
+        .required("Required"),
+    last_name:Yup.string()
+        .min(2,"At least 2 characters.")
+        .required("Required"),
+    student_number:Yup.string()
+        .required("Required"),
+    post_code:Yup.string()
+        .required("Required"),
+    address:Yup.string()
         .required("Required"),
     email:Yup.string()
         .email("It must be email address")
@@ -33,17 +43,10 @@ export const signUpMainAction = async (prevState, formData) =>{
     try {
         FormSchemaMain.validateSync(fields, { abortEarly:false });
 
-        // const res = await register(fields);
-        // const data = await res.json();     
-        // if (!res.ok) {
-		// 	return response(false, data?.message, data?.validations);
-		// }
-
     } catch (err) {
         if (err instanceof Yup.ValidationError) {
 			return getYupErrors(err.inner);
 		}
-        // satir eklendi
 		throw (err);
     }
     revalidatePath("/sign-up");
@@ -56,17 +59,17 @@ export const signUpPageAction = async (prevState, formData) =>{
 
     try {
         FormSchemaPage.validateSync(fields, { abortEarly:false });
-        // const res = await register(fields);
-        // const data = await res.json();     
-        // if (!res.ok) {
-		// 	return response(false, data?.message, data?.validations);
-		// }
+        const res = await register(fields);
+        const data = await res.json();     
+        console.log("data",data);
+        if (!res.ok) {
+			return response(false, data?.message, data?.validations);
+		}
 
     } catch (err) {
         if (err instanceof Yup.ValidationError) {
 			return getYupErrors(err.inner);
 		}
-        // satir eklendi
 		throw (err);
     }
     revalidatePath("/sign-in");

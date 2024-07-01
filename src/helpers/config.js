@@ -23,7 +23,8 @@ export const config = {
 		},
 	},
 	api: {
-		baseUrl: "https://realestate-db-0b8f8e0af5b5.herokuapp.com",
+		baseUrl: "http://localhost:8000",
+		LLMbaseUrl: "http://localhost:5000",
 
 	},
 	userRightsOnRoutes: [

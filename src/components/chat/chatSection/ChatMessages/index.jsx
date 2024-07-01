@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import hljs from "highlight.js";
 import DOMPurify from "dompurify";
+import parse from 'html-react-parser';
 
 const ChatMessages = ({ apiData, loading, copyClipboard, handleCopyClick }) => {
   const chatSectionRef = useRef(null);
@@ -19,34 +20,32 @@ const ChatMessages = ({ apiData, loading, copyClipboard, handleCopyClick }) => {
   }, [apiData, loading]);
 
   const renderCodeBlock = (html, index) => {
-    const div = document.createElement("div");
-    div.innerHTML = html;
-
-    const codeBlocks = Array.from(
-      div.querySelectorAll("pre code[class^='language-']")
-    );
-    const textBlocks = Array.from(div.querySelectorAll("p"));
+    const cleanHtml = DOMPurify.sanitize(html);
+    const parsedContent = parse(cleanHtml);
 
     const elements = [];
-    textBlocks.forEach((textBlock, idx) => {
-      elements.push(
-        <p key={`text-${index}-${idx}`} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(textBlock.innerHTML) }}></p>
-      );
 
-      if (codeBlocks[idx]) {
-        const codeText = codeBlocks[idx].innerText;
-        hljs.highlightElement(codeBlocks[idx]);  // Highlight.js ile renklendirme
+    React.Children.forEach(parsedContent, (child, idx) => {
+      if (child.type === 'p') {
+        elements.push(
+          <p key={`text-${index}-${idx}`}>{child.props.children}</p>
+        );
+      }
+
+      if (child.type === 'pre' && child.props.children.type === 'code') {
+        const codeClassName = child.props.children.props.className;
+        const codeText = child.props.children.props.children;
+
         elements.push(
           <div key={`code-${index}-${idx}`} className="code-block">
             <pre>
-              <code
-                className={codeBlocks[idx].className}
-                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(codeBlocks[idx].innerHTML) }}
-              />
+              <code className={codeClassName}>
+                {codeText}
+              </code>
             </pre>
             <div className="code-button-div">
               <div className="code-language">
-                {codeBlocks[0].className.slice(9).slice(0, -4)}
+                {codeClassName.slice(9)}
               </div>
               <button
                 className="copy-button"
@@ -102,7 +101,7 @@ const ChatMessages = ({ apiData, loading, copyClipboard, handleCopyClick }) => {
             {item.sanitizedHtml?.includes("code") ? (
               renderCodeBlock(item.sanitizedHtml, index)
             ) : (
-              <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(item?.answer?.result) }}></span>
+              parse(DOMPurify.sanitize(item?.answer?.result))
             )}
           </div>
         </div>
