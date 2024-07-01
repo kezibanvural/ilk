@@ -6,14 +6,14 @@ import Image from 'next/image'
 import SocialConnectionButton from '../common/buttons/social-connect-button'
 import Link from 'next/link'
 import { initialResponse } from '@/helpers/formValidation'
-import { signUpPageAction } from '@/actions/signUpAction'
 import eyeDefault from '/public/icons/actions/eye/State=Default.svg';
 import eyeDisabled from '/public/icons/actions/eye/State=Dissabled.svg';
 import SignInButton from '../common/buttons/sign-in';
+import { loginAction } from '@/actions/auth-action';
 
 const SignInForm = () => {
-    const [state, dispatch] = useFormState(signUpPageAction, initialResponse);
-    const [showPassword, setShowPassword] = useState(false);
+  const [state, dispatch] = useFormState(loginAction, initialResponse);
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className="signin-page-form">

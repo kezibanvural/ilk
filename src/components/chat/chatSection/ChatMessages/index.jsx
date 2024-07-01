@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import hljs from "highlight.js";
-
+import DOMPurify from "dompurify";
 
 const ChatMessages = ({ apiData, loading, copyClipboard, handleCopyClick }) => {
   const chatSectionRef = useRef(null);
@@ -30,18 +30,18 @@ const ChatMessages = ({ apiData, loading, copyClipboard, handleCopyClick }) => {
     const elements = [];
     textBlocks.forEach((textBlock, idx) => {
       elements.push(
-        <p key={`text-${index}-${idx}`} dangerouslySetInnerHTML={{ __html: textBlock.innerHTML }}></p>
+        <p key={`text-${index}-${idx}`} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(textBlock.innerHTML) }}></p>
       );
 
       if (codeBlocks[idx]) {
         const codeText = codeBlocks[idx].innerText;
-        hljs.highlightBlock(codeBlocks[idx]);  // Highlight.js ile renklendirme
+        hljs.highlightElement(codeBlocks[idx]);  // Highlight.js ile renklendirme
         elements.push(
           <div key={`code-${index}-${idx}`} className="code-block">
             <pre>
               <code
                 className={codeBlocks[idx].className}
-                dangerouslySetInnerHTML={{ __html: codeBlocks[idx].innerHTML }}
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(codeBlocks[idx].innerHTML) }}
               />
             </pre>
             <div className="code-button-div">
@@ -102,7 +102,7 @@ const ChatMessages = ({ apiData, loading, copyClipboard, handleCopyClick }) => {
             {item.sanitizedHtml?.includes("code") ? (
               renderCodeBlock(item.sanitizedHtml, index)
             ) : (
-              <span dangerouslySetInnerHTML={{ __html: item?.answer?.result }}></span>
+              <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(item?.answer?.result) }}></span>
             )}
           </div>
         </div>
