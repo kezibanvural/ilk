@@ -16,21 +16,17 @@ const config = {
 		}),
 	],
 	callbacks: {
+
 		authorized({ auth, request: { nextUrl } }) {
-			const isLoggedIn = !!auth?.access;
-			const isOnSignInPage = nextUrl.pathname.startsWith("/sign-in");
+			const isSignedIn = !!auth;
+			const isOnSigninPage = nextUrl.pathname.startsWith("/sign-in");
 			const isOnChatPage = nextUrl.pathname.startsWith("/chat");
-			const isTokenValid = getIsTokenValid(auth?.access);
-
-			console.log("isLoggedIn",isLoggedIn);
-			console.log("isOnSignInPage",isOnSignInPage);
-			console.log("isOnChatPage",isOnChatPage);
-			console.log("isTokenValid",isTokenValid);
-
-			if (isLoggedIn && isTokenValid) {
+			const isTokenValid = getIsTokenValid(auth?.accessToken);
+			console.log("auth",auth.user);
+			if (isSignedIn && isTokenValid) {
 				if (isOnChatPage) {
 					const isAuth = isUserAuthorized(
-						auth.access,
+						auth.user,
 						nextUrl.pathname
 					);
 
@@ -38,7 +34,7 @@ const config = {
 					return Response.redirect(new URL("/unauthorized", nextUrl));
 
 
-				} else if (isOnSignInPage) {
+				} else if (isOnSigninPage) {
 					return Response.redirect(new URL("/chat", nextUrl));
 				}
 			} else if (isOnChatPage) {
@@ -50,29 +46,20 @@ const config = {
 			return true;
 		},
 
-		//JWT datasina ihtiyac duyan her route icin bu callback cagrilir
-		callbacks: {
-			async jwt({ token, user }) {
-			  console.log("user", user);
-			  console.log("token", token);
-			  
-			  if (user) {
-				token.accessToken = user.access; // user.access'i token.accessToken olarak ekle
-				token.refreshToken = user.refresh; // user.refresh'i token.refreshToken olarak ekle
-				token.id = user.id; // user.id'yi token.id olarak ekle
-			  }
-		  
-			  return token;
-			},
-			async session({ session, token }) {
-			  session.accessToken = token.accessToken; // token.accessToken'i session.accessToken olarak ekle
-			  session.refreshToken = token.refreshToken; // token.refreshToken'i session.refreshToken olarak ekle
-			  session.user.id = token.id; // token.id'yi session.user.id olarak ekle
-		  
-			  return session;
-			}
-		  }
-		  
+		async jwt({ token, user }) {
+			console.log("user",user);
+			console.log("token",token);
+			return { ...user, ...token };
+		},
+
+		async session({ session, token }) {
+			const isTokenValid = getIsTokenValid(token.accessToken);
+			if(!isTokenValid) return null;
+
+			session.accessToken = token.accessToken;
+			session.user = token.user;
+			return session;
+		},
 	},
 	pages: {
 		signIn: "/sign-in",

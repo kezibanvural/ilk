@@ -68,13 +68,13 @@ const SignInForm = () => {
         </div>
         <SignInButton/>
       </form>
-      <div className="seperator">
+      {/* <div className="seperator">
           <span>or</span>
       </div>
       <div className="social-connection">
           <SocialConnectionButton title="Google" status="in" />
           <SocialConnectionButton title="Facebook" status="in" />
-      </div>
+      </div> */}
       <div className="text-center mt-3">
         <small>
         Don&apos;t have an account yet?
