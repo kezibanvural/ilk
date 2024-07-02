@@ -1,72 +1,82 @@
-import NextAuth from "next-auth"
+import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { login } from "./services/auth-service";
 import { getIsTokenValid, isUserAuthorized } from "./helpers/auth";
 
 const config = {
-    providers:[
-        Credentials({
-            async authorize(credentials){
-                const res = await login(credentials);
-                const data = await res.json();
-                console.log("message",data.message);
-                if(!res.ok) return null
-                return data ?? null;
-            }
-        })
-    ],
-    callbacks: {
+	providers: [
+		Credentials({
+			async authorize(credentials) {
+				const res = await login(credentials);
+				const data = await res.json();
+				if (!res.ok) return null;
+
+				return data;
+			},
+		}),
+	],
+	callbacks: {
 		authorized({ auth, request: { nextUrl } }) {
-			const isSignedIn = !!auth?.user?.role;
-			const isOnSignInPage = nextUrl.pathname.includes("/sign-in");
-			const isOnChatPage = nextUrl.pathname.includes("/chat");
-			const isTokenValid = getIsTokenValid(auth?.token);
-			// console.log("auth",auth);
-            
-			if (isSignedIn && isTokenValid) {
-                if (isOnChatPage) {
-                    const isAuth = isUserAuthorized(
-                        auth.user.role[0],
+			const isLoggedIn = !!auth?.access;
+			const isOnSignInPage = nextUrl.pathname.startsWith("/sign-in");
+			const isOnChatPage = nextUrl.pathname.startsWith("/chat");
+			const isTokenValid = getIsTokenValid(auth?.access);
+
+			console.log("isLoggedIn",isLoggedIn);
+			console.log("isOnSignInPage",isOnSignInPage);
+			console.log("isOnChatPage",isOnChatPage);
+			console.log("isTokenValid",isTokenValid);
+
+			if (isLoggedIn && isTokenValid) {
+				if (isOnChatPage) {
+					const isAuth = isUserAuthorized(
+						auth.access,
 						nextUrl.pathname
-                        );
-                        
+					);
+
 					if(isAuth) return true;
-					if(auth.user.role.toLowerCase() === "student"){
-						return Response.redirect(new URL("/unauthorized", nextUrl));
-					}
+					return Response.redirect(new URL("/unauthorized", nextUrl));
 
 
 				} else if (isOnSignInPage) {
-					if(auth.user.role[0].toLowerCase() === "student"){
-						return Response.redirect(new URL("/", nextUrl));
-					}else{
-
-						return Response.redirect(new URL("/sign-in", nextUrl));
-					}
+					return Response.redirect(new URL("/chat", nextUrl));
 				}
 			} else if (isOnChatPage) {
 				return false;
 			}
+
+			console.log("AUTH",auth)
+			console.log(auth?.user ? "Login olmus" : "login olmamis")
 			return true;
 		},
 
-		async jwt({ token, user }) {
-			return { ...user, ...token };
-		},
-		async session({ session, token }) {
-			const isTokenValid = getIsTokenValid(token.object.accessToken);
-			if(!isTokenValid) return null;
-			session.token = token.object.accessToken;
-            const payload = {...token.object}
-            delete payload.accessToken
-			session.user = payload
-			return session;
-		},
+		//JWT datasina ihtiyac duyan her route icin bu callback cagrilir
+		callbacks: {
+			async jwt({ token, user }) {
+			  console.log("user", user);
+			  console.log("token", token);
+			  
+			  if (user) {
+				token.accessToken = user.access; // user.access'i token.accessToken olarak ekle
+				token.refreshToken = user.refresh; // user.refresh'i token.refreshToken olarak ekle
+				token.id = user.id; // user.id'yi token.id olarak ekle
+			  }
+		  
+			  return token;
+			},
+			async session({ session, token }) {
+			  session.accessToken = token.accessToken; // token.accessToken'i session.accessToken olarak ekle
+			  session.refreshToken = token.refreshToken; // token.refreshToken'i session.refreshToken olarak ekle
+			  session.user.id = token.id; // token.id'yi session.user.id olarak ekle
+		  
+			  return session;
+			}
+		  }
+		  
 	},
-    pages: {
-        signIn : "/login",
-    }
-}
-
+	pages: {
+		signIn: "/sign-in",
+	},
+};
 
 export const { handlers, auth, signIn, signOut } = NextAuth(config);
