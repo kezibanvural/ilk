@@ -1,9 +1,9 @@
 @use "../../../styles/variables.scss" as v;
 
 .main-container{
-    background-color: #42A5F5;
-    border: 2px solid #42A5F5 ;
-    background-image: url("../../../../public/images/background/LooperBG.png");
+    background-color:rgba(204, 204, 204,0.4);
+    border: 2px solid v.$color-primary4 ;
+    background-image: url("../../../../public/images/background/LooperBG.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -46,7 +46,7 @@
 
                     h1{
                         font-size: 48px;
-                        color: #42A5F5;
+                        color: v.$color-primary4;
                         max-width: 382px;
                         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
 
@@ -92,14 +92,14 @@
                         a{
                             text-decoration: none;
                             margin-left: 0.5rem;
-                            color: #1976D2;
+                            color: v.$color-primary4;
 
                             &:hover{
-                                color: v.$color-blue4;
+                                color: v.$color-primary;
                             }
                         
                             &:active{
-                                color: v.$color-blue1;
+                                color: v.$color-primary2;
                             }
                         }
                     }
