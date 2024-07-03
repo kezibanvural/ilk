@@ -5,15 +5,15 @@
     width: 176px;
     height: 56px;
     border-radius: 52px;
-    background-color: #1976D2;
+    background-color: v.$color-primary4;
     border: none;
     color: white;
 
     &:hover{
-        background-color: v.$color-blue4;
+        background-color: v.$color-primary;
     }
 
     &:active{
-        background-color: v.$color-blue1;
+        background-color: v.$color-primary2;
     }
 }

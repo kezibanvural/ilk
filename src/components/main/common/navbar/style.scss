@@ -6,9 +6,10 @@
 
         li{
             a{
+                color: v.$color-primary2;
 
                 &.active{
-                    color: white!important;
+                    color: v.$color-primary4!important;
                 }
 
                 @media(max-width:992px){
@@ -20,7 +21,7 @@
                         position: absolute;
                         top: 0;
                         left: 0;
-                        background-color:#42A5F5;
+                        background-color:rgba(204,204,204,0.9);
                         z-index: -1;
                         opacity: 0.6;
                         border-radius: 0 0 30px 30px;
