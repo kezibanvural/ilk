@@ -64,11 +64,11 @@ export const signUpPageAction = async (prevState, formData) =>{
         FormSchemaPage.validateSync(fields, { abortEarly:false });
         const res = await register(fields);
         const data = await res.json();
-        console.log("signup",data);
+        // console.log("signup",res);
 
-        // if (res.ok) {
-        //     return response(true, "", null, data);
-        // }
+        if (res.ok) {
+            return response(true, data.email, null, data);
+        }
         if (!res.ok) {
 			return response(false, data?.message, data?.validations);
 		}
@@ -79,6 +79,4 @@ export const signUpPageAction = async (prevState, formData) =>{
 		}
 		throw (err);
     }
-    revalidatePath("/sign-in");
-	redirect(`/sign-in?email=${fields.email}`);
 }

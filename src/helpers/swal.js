@@ -1,13 +1,20 @@
 import Swal from "sweetalert2";
 
-export const swalAlert = (title, icon = "info", text = "") => {
-	// icon: error, success, info, warning, question değerleri alabilir
-	Swal.fire({
-		title,
-		text,
-		icon,
+export const swalAlert = (message, type) => {
+	return new Promise((resolve) => {
+	  Swal.fire({
+		title: message,
+		icon: type,
+		confirmButtonText: 'OK'
+	  }).then((result) => {
+		if (result.isConfirmed) {
+		  resolve(true);
+		} else {
+		  resolve(false);
+		}
+	  });
 	});
-};
+  };
 
 export const swalConfirm = (
 	title,
@@ -30,7 +37,7 @@ export const swalToast = (title, icon = "success") => {
 		toast: true,
 		position: "top-end",
 		showConfirmButton: false,
-		timer: 3000,
+		timer: 2500,
 		timerProgressBar: true,
 		didOpen: (toast) => {
 			toast.onmouseenter = Swal.stopTimer;
