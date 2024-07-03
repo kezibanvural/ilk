@@ -15,7 +15,7 @@
     text-align: center;
 
     h1 {
-      color: #42a5f5;
+      color: v.$color-primary4;
       font-size: 36px;
       font-weight: bold;
       margin-bottom: 0.7rem;
@@ -35,6 +35,15 @@
         height: 40px;
         border-radius: 10px;
 
+        &:not(:placeholder-shown){
+          background-color: rgba(245,223,33,0.7);
+        }
+
+        &:focus{
+          border: 1px solid v.$color-primary4;
+          box-shadow: 0 0 10px v.$color-primary4!important;
+        }
+
         &::placeholder {
           color: #d8d8d8;
         }
@@ -45,7 +54,6 @@
         transition: all 0.2s linear;
 
         .passwordEye {
-          color: v.$color-blue1;
           position: absolute;
           top: 12px;
           right: 10px;
@@ -73,6 +81,14 @@
         resize: none;
         border-radius: 10px!important;
 
+        &:focus{
+          border: 1px solid v.$color-primary4;
+          box-shadow: 0 0 10px v.$color-primary4!important;
+        }
+        &:not(:placeholder-shown){
+          background-color: rgba(245,223,33,0.7);
+        }
+
         &::placeholder{
           color: #d8d8d8;
         }
@@ -92,14 +108,14 @@
         a {
           text-decoration: none;
           margin-left: 0.5rem;
-          color: #1976d2;
+          color: v.$color-primary4;
 
           &:hover {
-            color: v.$color-blue4;
+            color: v.$color-primary;
           }
 
           &:active {
-            color: v.$color-blue1;
+            color: v.$color-primary2;
           }
         }
       }
@@ -171,14 +187,14 @@
     a {
       text-decoration: none;
       margin-left: 0.5rem;
-      color: #1976d2;
+      color: v.$color-primary4;
 
       &:hover {
-        color: v.$color-blue4;
+        color: v.$color-primary;
       }
 
       &:active {
-        color: v.$color-blue1;
+        color: v.$color-primary2;
       }
     }
   }
