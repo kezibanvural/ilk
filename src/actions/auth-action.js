@@ -1,7 +1,6 @@
 "use server";
 import { signIn } from "@/auth";
 import { convertFormDataToJson, getYupErrors, response } from "@/helpers/formValidation";
-import { login } from "@/services/auth-service";
 import { AuthError } from "next-auth";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";

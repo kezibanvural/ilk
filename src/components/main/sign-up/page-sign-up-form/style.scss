@@ -3,11 +3,11 @@
 .signup-page-form {
   background-color: white;
   border-radius: 100px;
-  padding: 3.5rem 7.5rem;
-  margin-bottom: 4rem;
-
-  @media (max-width: 567px) {
-    padding: 3.5rem 2.5rem;
+  padding: 2.5rem 4.5rem;
+  margin-bottom: 4rem;max-width: 700px;
+  max-width: 875px;
+  @media (max-width: 768px) {
+    padding: 3.5rem 1.5rem;
     width: 90%;
   }
 
@@ -32,8 +32,7 @@
       position: relative;
 
       input {
-        width: 400px;
-        height: 55px;
+        height: 40px;
         border-radius: 10px;
 
         &::placeholder {
@@ -48,7 +47,7 @@
         .passwordEye {
           color: v.$color-blue1;
           position: absolute;
-          top: 18px;
+          top: 12px;
           right: 10px;
           transition: all 0.2s linear;
           z-index: 99;
@@ -69,6 +68,16 @@
           font-size: 12px;
         }
       }
+
+      textarea{
+        resize: none;
+        border-radius: 10px!important;
+
+        &::placeholder{
+          color: #d8d8d8;
+        }
+      }
+
     }
 
     .form-check {
