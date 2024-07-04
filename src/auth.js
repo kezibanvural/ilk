@@ -22,7 +22,7 @@ const config = {
 			const isOnSigninPage = nextUrl.pathname.startsWith("/sign-in");
 			const isOnChatPage = nextUrl.pathname.startsWith("/chat");
 			const isTokenValid = getIsTokenValid(auth?.accessToken);
-			console.log("auth",auth.user);
+			console.log("auth",auth);
 			if (isSignedIn && isTokenValid) {
 				if (isOnChatPage) {
 					const isAuth = isUserAuthorized(

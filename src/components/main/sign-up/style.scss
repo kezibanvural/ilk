@@ -1,7 +1,7 @@
 @use "../../../styles/variables.scss" as v;
 
 .main-container{
-    background-color:rgba(204, 204, 204,0.4);
+    background-color:rgba(204, 204, 204, 0.623);
     border: 2px solid v.$color-primary4 ;
     background-image: url("../../../../public/images/background/LooperBG.svg");
     background-position: center;
@@ -48,7 +48,7 @@
                         font-size: 48px;
                         color: v.$color-primary4;
                         max-width: 382px;
-                        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+                        // text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
 
                         @media(max-width:768px){
                             max-width: 300px;
