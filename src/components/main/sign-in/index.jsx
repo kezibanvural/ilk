@@ -14,6 +14,7 @@ import { loginAction } from '@/actions/auth-action';
 const SignInForm = () => {
   const [state, dispatch] = useFormState(loginAction, initialResponse);
   const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordEye, setShowPasswordEye] = useState(false);
 
   return (
     <div className="signin-page-form">
@@ -43,21 +44,22 @@ const SignInForm = () => {
             }`}
             name="password"
             id="password"
+            onKeyDown={() => setShowPasswordEye(true)}
           />
           <div className="invalid-feedback">{state?.errors?.password}</div>
           {showPassword ? (
             <Image
               src={eyeDefault}
-              className="passwordEye"
+              className={`passwordEye ${showPasswordEye ? "" : "d-none" }`}
               width={25}
               height={17}
               alt='eyeOpened-icon'
-              onClick={() => setShowPassword((prev) => !prev)}
+              onClick={(e) => setShowPassword((prev) => !prev)}
             />
           ) : (
             <Image
               src={eyeDisabled}
-              className="passwordEye"
+              className={`passwordEye ${showPasswordEye ? "" : "d-none" }`}
               width={25}
               height={17}
               size={20}

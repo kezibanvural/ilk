@@ -6,10 +6,10 @@
 
         li{
             a{
-                color: v.$color-primary2;
+                color: v.$color-secondary1;
 
                 &.active{
-                    color: v.$color-primary4!important;
+                    color: v.$color-primary3!important;
                 }
 
                 @media(max-width:992px){
