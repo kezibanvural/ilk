@@ -9,6 +9,7 @@ const config = {
 			async authorize(credentials) {
 				const res = await login(credentials);
 				const data = await res.json();
+				console.log("data",data);
 				if (!res.ok) return null;
 
 				return data;
@@ -41,8 +42,8 @@ const config = {
 				return false;
 			}
 
-			console.log("AUTH",auth)
-			console.log(auth?.user ? "Login olmus" : "login olmamis")
+			// console.log("AUTH",auth)
+			// console.log(auth?.user ? "Login olmus" : "login olmamis")
 			return true;
 		},
 
