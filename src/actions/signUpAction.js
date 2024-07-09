@@ -62,9 +62,10 @@ export const signUpPageAction = async (prevState, formData) =>{
 
     try {
         FormSchemaPage.validateSync(fields, { abortEarly:false });
+        console.log("payload",fields);
         const res = await register(fields);
         const data = await res.json();
-        console.log("signup",data);
+        console.log("signupData",data);
 
         if (res.ok) {
             return response(true, data.email, null, data);
