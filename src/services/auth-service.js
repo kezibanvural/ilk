@@ -1,6 +1,6 @@
 import { config } from "@/helpers/config";
 
-const API_URL = config.api.baseUrl;
+const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 // TODO 
 export const login = (payload) => {
