@@ -1,4 +1,5 @@
-import DashboardAIChatSection from '@/components/chat/chatSection';
+import { auth } from '@/auth';
+import ChatAIChatSection from '@/components/chat/chatSection';
 import React from 'react'
 
 export const metadata = {
@@ -6,12 +7,15 @@ export const metadata = {
     description: "Learning Matrix AI Power in Education",
   };
 
-const DashboardPage = () => {
+const ChatPage = async () => {
+
+  const session = await auth();
+
   return (
     <div className='container'>
-      <DashboardAIChatSection/>
+      <ChatAIChatSection session={session} />
     </div>
   )
 }
 
-export default DashboardPage
+export default ChatPage

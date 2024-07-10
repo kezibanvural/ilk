@@ -4,6 +4,8 @@ import "./style.scss";
 import Image from "next/image";
 import history from "./history.json";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
+import { swalConfirm } from "@/helpers/swal";
 
 const ChatSidebar = () => {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -17,6 +19,13 @@ const ChatSidebar = () => {
   const handleCloseBtn = () => {
     setCloseSidebar((prev) => !prev);
   };
+
+  const handleLogout = async () => {
+    const resp = await swalConfirm("Are you sure to logout");
+    if (!resp.isConfirmed) return;
+
+    signOut({ callbackUrl: "/" });
+};
 
   return (
     <div className="sidebar m-0 p-0">
@@ -338,7 +347,7 @@ const ChatSidebar = () => {
               alt="add-icon"
             />
           </button>
-          <button className="new-chat">
+          <button className="new-chat" onClick={handleLogout}>
             <Image
               src="/icons/ui/icons/State=Default,Name=Logout.svg"
               width={24}

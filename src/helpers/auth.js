@@ -41,7 +41,7 @@ export const parseJwt = (token) => {
 
 export const getIsTokenValid = (token) => {
     if(!token) return false;
-    console.log("token",token);
+    // console.log("token",token);
     const jwtExpireTimeStamp = parseJwt(token).exp;
 
     const jwtExpireDateTime = new Date(jwtExpireTimeStamp * 1000);

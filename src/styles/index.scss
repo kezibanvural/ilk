@@ -1,6 +1,8 @@
 @use "./variables.scss" as v;
 @import "bootstrap/scss/bootstrap";
 @import 'highlight.js/styles/monokai-sublime.css';
+@import "sweetalert2/src/variables";
+@import "sweetalert2/src/sweetalert2";
 
 //LOADING STYLE
 @keyframes wave {
@@ -56,4 +58,13 @@
       height: 80%;
     }
   }
+}
+
+//SwalAlert2 Style
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm{
+  background-color: v.$color-primary4!important;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled).swal2-cancel{
+  background-color: v.$color-secondary2!important;
 }

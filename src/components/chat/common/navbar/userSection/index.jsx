@@ -4,7 +4,7 @@ import "./style.scss";
 import Image from "next/image";
 import Link from "next/link";
 
-const ChatNavbarUserSection = () => {
+const ChatNavbarUserSection = ({session}) => {
   return (
     <div className="user-section">
       <div className="dropdown">
@@ -43,7 +43,8 @@ const ChatNavbarUserSection = () => {
         <Image src="/icons/ui/avatar/avatar-icon.svg" width={33} height={33}alt="avatar-icon" />
         <div>
             <p>Welcome back!
-            <span> lmxai</span>
+              <br />
+            <span>{session?.user?.first_name}</span>
             </p>
         </div>
       </div>
