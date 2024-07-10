@@ -7,7 +7,7 @@ import ChatMessages from "./ChatMessages";
 import ChatOptions from "./ChatOptions";
 import ChatInput from "./ChatInput";
 
-const ChatAIChatSection = () => {
+const ChatAIChatSection =({session}) => {
   const [chat, setChat] = useState(false);
   const [apiData, setApiData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -18,7 +18,7 @@ const ChatAIChatSection = () => {
     setLoading(true);
     setChat(true);
 
-    const url =  "http://144.76.185.151:5000/lkai/ask";
+    const url =  "http://localhost:5000/lkai/ask";
     const options = {
       method: "POST",
       headers: {
@@ -67,7 +67,7 @@ const ChatAIChatSection = () => {
         <>
           <div className="chat-header">
             <h1>
-              <p>Hi, lmxai!</p>
+              <p>Hi, {session?.user?.first_name} {session?.user?.last_name}</p>
               <p>How Can I Help You?</p>
             </h1>
           </div>
