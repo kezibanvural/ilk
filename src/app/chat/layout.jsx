@@ -8,7 +8,7 @@ export const metadata = {
     description: "Learning Matrix AI Power in Education",
   };
   
-  export default function DashboardLayout({ children }) {
+  export default function ChatLayout({ children }) {
     return (
       <section className="dashboardChat-section">
         <DashboardNavbar/>

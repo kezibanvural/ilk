@@ -8,7 +8,7 @@ const config = {
         Credentials({
             async authorize(credentials) {
                 const res = await login(credentials);
-                const data = await res.json(); 
+                const data = await res.json();
                 console.log("data", data);
                 if (!res.ok) return null;
 				const payload = {
@@ -28,22 +28,25 @@ const config = {
             const isSignedIn = !!auth?.user?.role;
             const isOnSigninPage = nextUrl.pathname.startsWith("/sign-in");
             const isOnChatPage = nextUrl.pathname.startsWith("/chat");
+            const isOnDashboardPage = nextUrl.pathname.startsWith("/dashboard");
             const isTokenValid = getIsTokenValid(auth?.accessToken);
             console.log("auth", auth);
             if (isSignedIn && isTokenValid) {
                 if (isOnChatPage) {
                     const isAuth = isUserAuthorized(auth.user.role, nextUrl.pathname);
                     if (isAuth) return true;
-                    if (auth.user.role.toLowerCase() === "student") {
-                        return Response.redirect(new URL("/unauthorized", nextUrl));
-                    }
                 } else if (isOnSigninPage) {
                     if (auth.user.role.toLowerCase() === "student") {
                         return Response.redirect(new URL("/chat", nextUrl));
                     } else {
-                        return Response.redirect(new URL("/", nextUrl));
+                        return Response.redirect(new URL("/dashboard", nextUrl));
                     }
-                }
+					 
+                } else if(isOnDashboardPage){
+					if (auth.user.role.toLowerCase() === "student") {
+                        return Response.redirect(new URL("/unauthorized", nextUrl));
+                    }
+				}
             } else if (isOnChatPage) {
                 return false;
             }
@@ -51,6 +54,9 @@ const config = {
         },
 
         async jwt({ token, user }) {
+			if(user){
+				
+			}
             return { ...user, ...token };
         },
 
@@ -69,7 +75,7 @@ const config = {
             session.refreshToken = token.refreshToken;
             const payload = { ...token };
             delete payload.token;
-			console.log("oooooooooooo",token);
+			// console.log("oooooooooooo",token);
             session.user = token.user;
             return session;
         },
