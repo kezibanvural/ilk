@@ -4,8 +4,8 @@ import "./style.scss";
 import Image from "next/image";
 import history from "./history.json";
 import Link from "next/link";
-import { signOut } from "next-auth/react";
 import { swalConfirm } from "@/helpers/swal";
+import { signOut } from "next-auth/react";
 
 const ChatSidebar = () => {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -21,7 +21,7 @@ const ChatSidebar = () => {
   };
 
   const handleLogout = async () => {
-    const resp = await swalConfirm("Are you sure to logout");
+    const resp = await swalConfirm("Are you sure");
     if (!resp.isConfirmed) return;
 
     signOut({ callbackUrl: "/" });

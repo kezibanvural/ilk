@@ -18,7 +18,7 @@ const ChatAIChatSection =({session}) => {
     setLoading(true);
     setChat(true);
 
-    const url =  "http://localhost:5000/lkai/ask";
+    const url =  "http://api.dev.lkai.app/ask";
     const options = {
       method: "POST",
       headers: {
