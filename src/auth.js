@@ -4,6 +4,7 @@ import { login, refreshTokenService } from "./services/auth-service";
 import { getIsTokenValid, isUserAuthorized } from "./helpers/auth";
 
 const config = {
+    site: "https://lkai.app",
     providers: [
         Credentials({
             async authorize(credentials) {
