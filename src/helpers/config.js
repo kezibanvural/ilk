@@ -23,7 +23,7 @@ export const config = {
 		},
 	},
 	api: {
-		baseUrl: "http://localhost:8000",
+		baseUrl: "https://api.dev.lkai.app",
 		LLMbaseUrl: "http://localhost:5000",
 
 	},
