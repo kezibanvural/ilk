@@ -1,6 +1,6 @@
 import { config } from "@/helpers/config";
 
-const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const API_URL = config.api.baseUrl;
 
 export const register = (payload) => {
 	console.log("API_URL",API_URL);
