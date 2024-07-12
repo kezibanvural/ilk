@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import { config } from "./config";
 import { getSession } from "next-auth/react";
+import { refreshTokenService } from "@/services/auth-service";
 
 export const getAuthHeader = async () => {
     const session = await auth();
@@ -39,14 +40,25 @@ export const parseJwt = (token) => {
 }
 
 
-export const getIsTokenValid = (token) => {
-    if(!token) return false;
+export const getIsTokenValid = async (token) => {
+    if(!token?.accessToken) return false;
     // console.log("token",token);
-    const jwtExpireTimeStamp = parseJwt(token).exp;
+    const jwtExpireTimeStamp = parseJwt(token.accessToken).exp;
 
     const jwtExpireDateTime = new Date(jwtExpireTimeStamp * 1000);
 
     if(jwtExpireDateTime <= new Date()){
+
+        const payload = {refresh:token.refreshToken}
+        const res = await refreshTokenService(payload);
+        const data = await res.json();
+
+        if(data){
+            console.log('Token refreshed successfully', data);
+            token.accessToken = data.access
+            return true;
+        }
+
         console.log('API token was expired')
         return false
     }
