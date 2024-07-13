@@ -1,6 +1,6 @@
-// import { config } from "@/helpers/config";
+import { config } from "@/helpers/config";
 
-const REQ_API_URL = process.env.NEXT_PUBLIC_API_URL;
+const REQ_API_URL = config.api.baseUrl;
 
 export const login = (payload) => {
 	console.log();
