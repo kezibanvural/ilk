@@ -1,8 +1,12 @@
+
+import NotFound from '@/components/errors/not-found'
 import React from 'react'
 
 const MainNotFoundPage = () => {
   return (
-    <div>MainNotFoundPage</div>
+    <div className='error-container'>
+      <NotFound/>
+    </div>
   )
 }
 
