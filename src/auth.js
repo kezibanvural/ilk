@@ -76,7 +76,7 @@ const config = {
     signIn: "/sign-in",
   },
   // Güvenli host ayarları
-  trustHost: true,
+//   trustHost: true,
   // Otomatik olarak geçerli host'u güvenilir olarak kabul eder
 };
 
