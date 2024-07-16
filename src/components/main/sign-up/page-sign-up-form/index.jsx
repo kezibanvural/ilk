@@ -11,12 +11,24 @@ import eyeDefault from "/public/icons/actions/eye/State=Default.svg";
 import eyeDisabled from "/public/icons/actions/eye/State=Dissabled.svg";
 import { useRouter } from "next/navigation";
 import { swalToast } from "@/helpers/swal";
+import { parseJwt } from "@/helpers/auth";
 
-const SignUpPageForm = ({ directedEmail }) => {
+const SignUpPageForm = () => {
   const [state, dispatch] = useFormState(signUpPageAction, initialResponse);
   const [showPassword, setShowPassword] = useState(false);
+  const [directedEmail, setDirectedEmail] = useState("")
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    if(localStorage.getItem("directedEmail") === "null"){
+      setDirectedEmail("")
+    } else{
+      const email = parseJwt(localStorage.getItem("directedEmail"))
+      setDirectedEmail(email.email)
+    }
+  }, [])
+  
 
   useEffect(() => {
     if (state?.success) {

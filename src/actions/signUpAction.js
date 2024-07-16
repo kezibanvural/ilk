@@ -48,8 +48,8 @@ export const signUpMainAction = async (prevState, formData) =>{
     try {
         FormSchemaMain.validateSync(fields, { abortEarly:false });
 
-        const token = jwt.sign({ email: fields.email }, secretKey, { expiresIn: '1h' });
-        token ? response(true, "", null, token) : null
+        const emailToken = jwt.sign({ email: fields.email }, secretKey, { expiresIn: '1h' });
+        if(emailToken) return response(true, "", null, emailToken)
         
     } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -57,9 +57,6 @@ export const signUpMainAction = async (prevState, formData) =>{
 		}
 		throw (err);
     }
-    const token = jwt.sign({ email: fields.email }, secretKey, { expiresIn: '1h' });
-    revalidatePath("/sign-up");
-	redirect(`/sign-up?email=${token}`);
 }
 
 export const signUpPageAction = async (prevState, formData) =>{
