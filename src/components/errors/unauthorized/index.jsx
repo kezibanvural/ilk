@@ -22,7 +22,7 @@ const UnauthorizedComponent = () => {
       >
         <div className="col-lg-6">
           <Image
-            src="/images/errorPages/UnauthorizedPage.png"
+            src="/images/errorPages/unauthorizedPage.png"
             className="img-fluid w-lg-auto w-100 rounded-5"
             width={500}
             height={500}
