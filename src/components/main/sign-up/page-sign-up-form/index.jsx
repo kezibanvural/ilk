@@ -12,12 +12,11 @@ import eyeDisabled from "/public/icons/actions/eye/State=Dissabled.svg";
 import { useRouter } from "next/navigation";
 import { swalToast } from "@/helpers/swal";
 
-const SignUpPageForm = ({ searchParams }) => {
+const SignUpPageForm = ({ directedEmail }) => {
   const [state, dispatch] = useFormState(signUpPageAction, initialResponse);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const router = useRouter();
-  console.log(state);
 
   useEffect(() => {
     if (state?.success) {
@@ -74,7 +73,7 @@ const SignUpPageForm = ({ searchParams }) => {
                 }`}
                 name="email"
                 id="email"
-                defaultValue={searchParams.email}
+                defaultValue={directedEmail}
               />
               <div className="invalid-feedback">{state?.errors?.email}</div>
             </div>
