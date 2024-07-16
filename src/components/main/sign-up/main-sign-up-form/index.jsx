@@ -10,7 +10,8 @@ import { initialResponse } from "@/helpers/formValidation";
 const MainSignUpForm = () => {
 
   const [state, dispatch] = useFormState(signUpMainAction, initialResponse);
-
+  
+  console.log(state);
   return (
     <form 
       className="signup-form"

@@ -4,6 +4,7 @@ import { register } from "@/services/sign-up-service";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import * as Yup from "yup";
+import jwt from 'jsonwebtoken';
 
 const FormSchemaMain = Yup.object({
     email:Yup.string()
@@ -42,18 +43,23 @@ const FormSchemaPage = Yup.object({
 export const signUpMainAction = async (prevState, formData) =>{
 
     const fields = convertFormDataToJson(formData)
+    const secretKey = '7HN5dknVIpsFAfdqgk5KnAX6Jq2ekB3g';
 
     try {
         FormSchemaMain.validateSync(fields, { abortEarly:false });
 
+        const token = jwt.sign({ email: fields.email }, secretKey, { expiresIn: '1h' });
+        token ? response(true, "", null, token) : null
+        
     } catch (err) {
         if (err instanceof Yup.ValidationError) {
 			return getYupErrors(err.inner);
 		}
 		throw (err);
     }
+    const token = jwt.sign({ email: fields.email }, secretKey, { expiresIn: '1h' });
     revalidatePath("/sign-up");
-	redirect(`/sign-up?email=${fields.email}`);
+	redirect(`/sign-up?email=${token}`);
 }
 
 export const signUpPageAction = async (prevState, formData) =>{
