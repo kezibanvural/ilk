@@ -1,9 +1,12 @@
-import React from 'react'
+import UnauthorizedComponent from "@/components/errors/unauthorized";
+import React from "react";
 
 const MainUnauthorizedPage = () => {
   return (
-    <div>MainUnauthorizedPage</div>
-  )
-}
+    <div className="h-100">
+      <UnauthorizedComponent />
+    </div>
+  );
+};
 
-export default MainUnauthorizedPage
+export default MainUnauthorizedPage;
