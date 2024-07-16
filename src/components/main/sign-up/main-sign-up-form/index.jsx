@@ -1,17 +1,25 @@
 "use client"
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormState } from "react-dom";
 import "./style.scss";
 import SignUpButton from "../../common/buttons/sign-up";
 import Link from "next/link";
 import { signUpMainAction } from "@/actions/signUpAction";
 import { initialResponse } from "@/helpers/formValidation";
+import { useRouter } from "next/navigation";
 
 const MainSignUpForm = () => {
 
   const [state, dispatch] = useFormState(signUpMainAction, initialResponse);
-  
-  console.log(state);
+  const router = useRouter();
+
+  useEffect(() => {
+    const email = state.data ? state.data : null
+    localStorage.setItem("directedEmail", email)
+    if(state.success){
+      router.push(`/sign-up`)
+    }
+  }, [state]);
   return (
     <form 
       className="signup-form"
