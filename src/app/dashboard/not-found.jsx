@@ -1,7 +1,7 @@
 import NotFound from '@/components/errors/not-found'
 import React from 'react'
 
-const ChatNotFoundPage = () => {
+const DashboardNotFoundPage = () => {
   return (
     <div style={{
       background:"url(/images/background/LooperBG.svg)",
@@ -23,4 +23,4 @@ const ChatNotFoundPage = () => {
   )
 }
 
-export default ChatNotFoundPage
+export default DashboardNotFoundPage
