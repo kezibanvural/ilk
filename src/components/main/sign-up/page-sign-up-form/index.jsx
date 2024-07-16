@@ -11,7 +11,6 @@ import eyeDefault from "/public/icons/actions/eye/State=Default.svg";
 import eyeDisabled from "/public/icons/actions/eye/State=Dissabled.svg";
 import { useRouter } from "next/navigation";
 import { swalToast } from "@/helpers/swal";
-import { getCookie } from 'cookies-next';
 import { parseJwt } from "@/helpers/auth";
 
 const SignUpPageForm = () => {

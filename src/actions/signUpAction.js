@@ -5,7 +5,6 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import * as Yup from "yup";
 import jwt from 'jsonwebtoken';
-import { setCookie } from 'cookies-next';
 
 const FormSchemaMain = Yup.object({
     email:Yup.string()
