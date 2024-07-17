@@ -16,19 +16,18 @@ import { parseJwt } from "@/helpers/auth";
 const SignUpPageForm = () => {
   const [state, dispatch] = useFormState(signUpPageAction, initialResponse);
   const [showPassword, setShowPassword] = useState(false);
-  const [directedEmail, setDirectedEmail] = useState("")
+  const [directedEmail, setDirectedEmail] = useState("");
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    if(localStorage.getItem("directedEmail") === "null"){
-      setDirectedEmail("")
-    } else{
-      const email = parseJwt(localStorage.getItem("directedEmail"))
-      setDirectedEmail(email.email)
+    if (localStorage.getItem("directedEmail") === "null") {
+      setDirectedEmail("");
+    } else {
+      const email = parseJwt(localStorage.getItem("directedEmail"));
+      setDirectedEmail(email.email);
     }
-  }, [])
-  
+  }, []);
 
   useEffect(() => {
     if (state?.success) {
@@ -39,12 +38,22 @@ const SignUpPageForm = () => {
     }
   }, [state, router]);
 
+  console.log("/*/*/*/", state);
+
   return (
     <div className="signup-page-form">
       <div className="text">
         <h1>Sign up</h1>
         <p>Please sign up to create your account</p>
       </div>
+      {!state.success && state?.data?.email ? (
+        <div className="alert alert-danger">Email must be unique!</div>
+      ) : !state.success && state?.data?.student_number ? (
+        <div className="alert alert-danger">User with this student number already exists.</div>
+      ) : !state.success && state?.message ? (
+        <div className="alert alert-danger">{state.data.message}</div>
+      ) : null}
+
       <form action={dispatch} noValidate>
         <div className="row">
           <div className="col-12 col-md-6">
@@ -58,7 +67,9 @@ const SignUpPageForm = () => {
                 name="first_name"
                 id="first_name"
               />
-              <div className="invalid-feedback">{state?.errors?.first_name}</div>
+              <div className="invalid-feedback">
+                {state?.errors?.first_name}
+              </div>
             </div>
           </div>
           <div className="col-12 col-md-6">
@@ -81,7 +92,7 @@ const SignUpPageForm = () => {
                 type="email"
                 placeholder="Email"
                 className={`form-control rounded-3 ${
-                  state?.errors?.email ? "is-invalid" : ""
+                  state?.errors?.email || state.data?.email ? "is-invalid" : ""
                 }`}
                 name="email"
                 id="email"
@@ -96,7 +107,7 @@ const SignUpPageForm = () => {
                 type="number"
                 placeholder="Student Number"
                 className={`form-control rounded-3 ${
-                  state?.errors?.student_number ? "is-invalid" : ""
+                  state?.errors?.student_number || state.data?.student_number ? "is-invalid" : ""
                 }`}
                 name="student_number"
                 id="student_number"
@@ -180,8 +191,10 @@ const SignUpPageForm = () => {
                 name="confirmPassword"
                 id="confirmPassword"
               />
-              <div className="invalid-feedback">{state?.errors?.confirmPassword}</div>
-              {showPassword ? (
+              <div className="invalid-feedback">
+                {state?.errors?.confirmPassword}
+              </div>
+              {showConfirmPassword ? (
                 <Image
                   src={eyeDefault}
                   className="passwordEye"
@@ -219,7 +232,9 @@ const SignUpPageForm = () => {
                   Privacy Policy
                 </Link>
               </label>
-              <div className="invalid-feedback">{state?.errors?.privacyPolicy}</div>
+              <div className="invalid-feedback">
+                {state?.errors?.privacyPolicy}
+              </div>
             </div>
           </div>
         </div>

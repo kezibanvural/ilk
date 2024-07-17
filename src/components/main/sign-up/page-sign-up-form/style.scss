@@ -25,6 +25,16 @@
       margin-bottom: 1rem;
     }
   }
+  .alert{
+
+    @media(max-width:576px){
+      font-size: 12px;
+    }
+
+    @media(max-width:400px){
+      text-align: center;
+    }
+  }
 
   form {
     .input-group {
@@ -201,4 +211,13 @@
 
 .was-validated .form-check-input:invalid ~ .form-check-label, .form-check-input.is-invalid ~ .form-check-label{
   color: #2b2a2a;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
 }
