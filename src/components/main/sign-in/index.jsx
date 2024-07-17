@@ -1,20 +1,22 @@
-"use client"
-import React, { useState } from 'react'
+"use client";
+import React, { useState } from "react";
 import { useFormState } from "react-dom";
-import "./style.scss"
-import Image from 'next/image'
-import SocialConnectionButton from '../common/buttons/social-connect-button'
-import Link from 'next/link'
-import { initialResponse } from '@/helpers/formValidation'
-import eyeDefault from '/public/icons/actions/eye/State=Default.svg';
-import eyeDisabled from '/public/icons/actions/eye/State=Dissabled.svg';
-import SignInButton from '../common/buttons/sign-in';
-import { loginAction } from '@/actions/auth-action';
+import "./style.scss";
+import Image from "next/image";
+import SocialConnectionButton from "../common/buttons/social-connect-button";
+import Link from "next/link";
+import { initialResponse } from "@/helpers/formValidation";
+import eyeDefault from "/public/icons/actions/eye/State=Default.svg";
+import eyeDisabled from "/public/icons/actions/eye/State=Dissabled.svg";
+import SignInButton from "../common/buttons/sign-in";
+import { loginAction } from "@/actions/auth-action";
 
 const SignInForm = () => {
   const [state, dispatch] = useFormState(loginAction, initialResponse);
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordEye, setShowPasswordEye] = useState(false);
+
+  console.log("state",state);
 
   return (
     <div className="signin-page-form">
@@ -23,6 +25,11 @@ const SignInForm = () => {
         <p>Please login to continue to your account</p>
       </div>
       <form action={dispatch} noValidate>
+        {!state.success && state?.message ? (
+          <div className="alert alert-danger">{state.message}</div>
+        ) : (
+          ""
+        )}
         <div className="input-group">
           <input
             type="email"
@@ -50,25 +57,25 @@ const SignInForm = () => {
           {showPassword ? (
             <Image
               src={eyeDefault}
-              className={`passwordEye ${showPasswordEye ? "" : "d-none" }`}
+              className={`passwordEye ${showPasswordEye ? "" : "d-none"}`}
               width={25}
               height={17}
-              alt='eyeOpened-icon'
+              alt="eyeOpened-icon"
               onClick={(e) => setShowPassword((prev) => !prev)}
             />
           ) : (
             <Image
               src={eyeDisabled}
-              className={`passwordEye ${showPasswordEye ? "" : "d-none" }`}
+              className={`passwordEye ${showPasswordEye ? "" : "d-none"}`}
               width={25}
               height={17}
               size={20}
-              alt='eyeClosed-icon'
+              alt="eyeClosed-icon"
               onClick={() => setShowPassword((prev) => !prev)}
             />
           )}
         </div>
-        <SignInButton/>
+        <SignInButton />
       </form>
       {/* <div className="seperator">
           <span>or</span>
@@ -79,12 +86,12 @@ const SignInForm = () => {
       </div> */}
       <div className="text-center mt-3">
         <small>
-        Don&apos;t have an account yet?
+          Don&apos;t have an account yet?
           <Link href="/sign-up">Sign up</Link>
         </small>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SignInForm
+export default SignInForm;

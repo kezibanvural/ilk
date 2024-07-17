@@ -28,7 +28,7 @@ export const loginAction = async (prevState, formData) => {
 			return getYupErrors(err.inner);
 		}
         else if(err instanceof AuthError){
-            if(err.type==='CredentialsSignin'){
+            if(err.type==='CallbackRouteError'){
                 return response(false, 'Invalid credentials')
             }
             return response(false, 'Something went wrong.')

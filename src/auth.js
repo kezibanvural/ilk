@@ -44,11 +44,11 @@ const config = {
             return Response.redirect(new URL("/chat", nextUrl));
           }
         } else if (isOnDashboardPage) {
-          if (auth.user.role.toLowerCase() === "student") {
+          if (auth.user.role.toLowerCase() === "student" && auth.user.role) {
             return Response.redirect(new URL("/unauthorized", nextUrl));
           }
         }
-      } else if (isOnChatPage) {
+      } else if (isOnDashboardPage || isOnChatPage ) {
         return false;
       }
       return true;
