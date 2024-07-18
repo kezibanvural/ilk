@@ -86,7 +86,7 @@ const ChatMessages = ({ apiData, loading, copyClipboard, handleCopyClick }) => {
           </div>
           <div className="col-11 col-md-10 answer-header p-0">
             <div className="mb-2">
-              <span>{item?.answer?.query}</span>
+              <span>{item?.question}</span>
               <Image
                 src="/icons/ui/icons/State=Default,Name=Edit-chatSection.svg"
                 width={24}
@@ -101,7 +101,7 @@ const ChatMessages = ({ apiData, loading, copyClipboard, handleCopyClick }) => {
             {item.sanitizedHtml?.includes("code") ? (
               renderCodeBlock(item.sanitizedHtml, index)
             ) : (
-              parse(DOMPurify.sanitize(item?.answer?.result))
+              parse(DOMPurify.sanitize(item?.answer))
             )}
           </div>
         </div>

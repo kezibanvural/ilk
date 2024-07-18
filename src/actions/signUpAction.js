@@ -48,7 +48,7 @@ export const signUpMainAction = async (prevState, formData) =>{
     try {
         FormSchemaMain.validateSync(fields, { abortEarly:false });
 
-        const emailToken = jwt.sign({ email: fields.email }, secretKey, { expiresIn: '1h' });
+        const emailToken = jwt.sign({ email: fields.email }, secretKey, { expiresIn: '1h',algorithm:"HS512" });
         if(emailToken) return response(true, "", null, emailToken)
         
     } catch (err) {
