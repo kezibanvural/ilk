@@ -31,7 +31,7 @@ const ChatAIChatSection =({session}) => {
       const data = await response.json();
       console.log("data", data);
       const sanitizedHtml = DOMPurify.sanitize(
-        marked(data?.answer?.result || "")
+        marked(data?.answer || "")
       );
 
       setApiData((prevData) => [...prevData, { ...data, sanitizedHtml }]);
