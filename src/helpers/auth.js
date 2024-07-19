@@ -16,7 +16,7 @@ export const getAuthHeader = async () => {
 
 export const getAuthHeaderClient = async () => {
     const session = await getSession();
-    const token = session?.token;
+    const token = session?.accessToken;
 
     let authHeader = { "Content-Type": "application/json" };
     if (token) {

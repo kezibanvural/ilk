@@ -38,8 +38,6 @@ const SignUpPageForm = () => {
     }
   }, [state, router]);
 
-  console.log("/*/*/*/", state);
-
   return (
     <div className="signup-page-form">
       <div className="text">
