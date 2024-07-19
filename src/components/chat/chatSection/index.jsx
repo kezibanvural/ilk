@@ -6,6 +6,7 @@ import DOMPurify from "dompurify";
 import ChatMessages from "./ChatMessages";
 import ChatOptions from "./ChatOptions";
 import ChatInput from "./ChatInput";
+import { getAuthHeaderClient } from "@/helpers/auth";
 
 const ChatAIChatSection =({session}) => {
   const [chat, setChat] = useState(false);
@@ -21,11 +22,10 @@ const ChatAIChatSection =({session}) => {
     const url =  "https://api.dev.lkai.app/ask";
     const options = {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: await getAuthHeaderClient(),
       body: JSON.stringify({ question: inputValue }),
     };
+    console.log("/*/*/*/*/*",options);
     try {
       const response = await fetch(url, options);
       const data = await response.json();
