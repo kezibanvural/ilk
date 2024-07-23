@@ -6,6 +6,8 @@ import history from "./history.json";
 import Link from "next/link";
 import { swalConfirm } from "@/helpers/swal";
 import { signOut } from "next-auth/react";
+import { newChatAction } from "@/actions/chat-action";
+
 
 const ChatSidebar = () => {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -27,6 +29,7 @@ const ChatSidebar = () => {
     signOut({ callbackUrl: "/" });
 };
 
+
   return (
     <div className="sidebar m-0 p-0">
       <button
@@ -42,7 +45,7 @@ const ChatSidebar = () => {
         }
       >
         <div className="sidebar-top">
-          <button className="new-chat">
+          <button className="new-chat" onClick={newChatAction}>
             {closeSidebar ? (
               <Image
                 src="/icons/ui/icons/add-icon.svg"

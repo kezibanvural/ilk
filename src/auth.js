@@ -75,9 +75,6 @@ const config = {
   pages: {
     signIn: "/sign-in",
   },
-  // Güvenli host ayarları
-//   trustHost: true,
-  // Otomatik olarak geçerli host'u güvenilir olarak kabul eder
 };
 
 export const { handlers, auth, signIn, signOut } = NextAuth(config);
