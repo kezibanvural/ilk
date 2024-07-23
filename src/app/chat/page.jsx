@@ -1,6 +1,5 @@
 import { auth } from '@/auth';
 import ChatAIChatSection from '@/components/chat/chatSection';
-import { refreshTokenService } from '@/services/auth-service';
 import React from 'react'
 
 export const metadata = {

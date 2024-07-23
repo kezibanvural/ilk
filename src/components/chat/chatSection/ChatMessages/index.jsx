@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import hljs from "highlight.js";
 import DOMPurify from "dompurify";
 import parse from 'html-react-parser';
+import { renderCodeText } from "@/helpers/chat/renderCodeText";
 
-const ChatMessages = ({ apiData, loading, copyClipboard, handleCopyClick }) => {
+const ChatMessages = ({ apiData, loading }) => {
+  const [copyClipboard, setCopyClipboard] = useState(false);
   const chatSectionRef = useRef(null);
 
   useEffect(() => {
@@ -18,59 +20,6 @@ const ChatMessages = ({ apiData, loading, copyClipboard, handleCopyClick }) => {
       hljs.highlightElement(block);
     });
   }, [apiData, loading]);
-
-  const renderCodeBlock = (html, index) => {
-    const cleanHtml = DOMPurify.sanitize(html);
-    const parsedContent = parse(cleanHtml);
-
-    const elements = [];
-
-    React.Children.forEach(parsedContent, (child, idx) => {
-      if (child.type === 'p') {
-        elements.push(
-          <p key={`text-${index}-${idx}`}>{child.props.children}</p>
-        );
-      }
-
-      if (child.type === 'pre' && child.props.children.type === 'code') {
-        const codeClassName = child.props.children.props.className;
-        const codeText = child.props.children.props.children;
-
-        elements.push(
-          <div key={`code-${index}-${idx}`} className="code-block">
-            <pre>
-              <code className={codeClassName}>
-                {codeText}
-              </code>
-            </pre>
-            <div className="code-button-div">
-              <div className="code-language">
-                {codeClassName.slice(9)}
-              </div>
-              <button
-                className="copy-button"
-                onClick={() => handleCopyClick(codeText)}
-              >
-                <Image
-                  src={
-                    copyClipboard
-                      ? "/icons/actions/copy/copied-icon.svg"
-                      : "/icons/actions/copy/copy-icon.svg"
-                  }
-                  width={24}
-                  height={24}
-                  alt={copyClipboard ? "copied-icon" : "copy-icon"}
-                />
-                <span>Copy</span>
-              </button>
-            </div>
-          </div>
-        );
-      }
-    });
-
-    return elements;
-  };
 
   return (
     <div className="chat-section w-100 h-100 container" ref={chatSectionRef}>
@@ -99,7 +48,7 @@ const ChatMessages = ({ apiData, loading, copyClipboard, handleCopyClick }) => {
           <div className="col-0 col-md-1 d-none d-md-block"></div>
           <div className={`col-11 col-md-10 code-column code-column-${index}`}>
             {item.sanitizedHtml?.includes("code") ? (
-              renderCodeBlock(item.sanitizedHtml, index)
+              renderCodeText(item.sanitizedHtml, index, copyClipboard, setCopyClipboard)
             ) : (
               parse(DOMPurify.sanitize(item?.answer))
             )}
