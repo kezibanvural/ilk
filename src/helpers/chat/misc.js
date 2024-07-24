@@ -8,4 +8,4 @@ export const handleCopyClick = (codeText, copyClipboardSetter) => {
         console.error("Failed to copy: ", err);
       }
     );
-  };
+};
