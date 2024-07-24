@@ -24,8 +24,6 @@ export const config = {
 	},
 	api: {
 		baseUrl: "https://api.dev.lkai.app",
-		LLMbaseUrl: "http://localhost:5000",
-
 	},
 	userRightsOnRoutes: [
 		{urlRegex: /\/chat$/, rights:["student"]},

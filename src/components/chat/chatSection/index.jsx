@@ -6,18 +6,21 @@ import ChatInput from "./ChatInput";
 import { getAuthHeaderClient } from "@/helpers/auth";
 import { chatMarker } from "@/helpers/chat/chatMarker";
 import "./style.scss";
+import { config } from "@/helpers/config";
 
 const ChatAIChatSection =({session}) => {
   const [chat, setChat] = useState(false);
   const [apiData, setApiData] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const REQ_API_URL = process.env.BASE_URL;
+
   const handleChat = async (inputValue) => {
     if (!inputValue) return;
     setLoading(true);
     setChat(true);
 
-    const url =  "https://api.dev.lkai.app/ask";
+    const url =  `${REQ_API_URL}/ask`;
     const options = {
       method: "POST",
       headers: await getAuthHeaderClient(),
