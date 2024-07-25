@@ -21,5 +21,16 @@
 
     span{
         margin: 1.5px 10px;
+
+        @media(max-width:576px){
+            margin-left: 0.3rem ;
+        }
+    }
+
+    @media(max-width:576px){
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }

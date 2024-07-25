@@ -3,11 +3,11 @@
 .signup-page-form {
   background-color: white;
   border-radius: 100px;
-  padding: 3.5rem 7.5rem;
-  margin-bottom: 4rem;
-
-  @media (max-width: 567px) {
-    padding: 3.5rem 2.5rem;
+  padding: 2.5rem 4.5rem;
+  margin-bottom: 4rem;max-width: 700px;
+  max-width: 875px;
+  @media (max-width: 768px) {
+    padding: 3.5rem 1.5rem;
     width: 90%;
   }
 
@@ -15,7 +15,7 @@
     text-align: center;
 
     h1 {
-      color: #42a5f5;
+      color: v.$color-primary4;
       font-size: 36px;
       font-weight: bold;
       margin-bottom: 0.7rem;
@@ -25,6 +25,16 @@
       margin-bottom: 1rem;
     }
   }
+  .alert{
+
+    @media(max-width:576px){
+      font-size: 12px;
+    }
+
+    @media(max-width:400px){
+      text-align: center;
+    }
+  }
 
   form {
     .input-group {
@@ -32,9 +42,17 @@
       position: relative;
 
       input {
-        width: 400px;
-        height: 55px;
+        height: 40px;
         border-radius: 10px;
+
+        &:not(:placeholder-shown){
+          background-color: rgba(245,223,33,0.7);
+        }
+
+        &:focus{
+          border: 1px solid v.$color-primary4;
+          box-shadow: 0 0 10px v.$color-primary4!important;
+        }
 
         &::placeholder {
           color: #d8d8d8;
@@ -46,9 +64,8 @@
         transition: all 0.2s linear;
 
         .passwordEye {
-          color: v.$color-blue1;
           position: absolute;
-          top: 18px;
+          top: 12px;
           right: 10px;
           transition: all 0.2s linear;
           z-index: 99;
@@ -69,6 +86,23 @@
           font-size: 12px;
         }
       }
+
+      textarea{
+        resize: none;
+        border-radius: 10px!important;
+
+        &:focus{
+          border: 1px solid v.$color-primary4;
+          box-shadow: 0 0 10px v.$color-primary4!important;
+        }
+        &:not(:placeholder-shown){
+          background-color: rgba(245,223,33,0.7);
+        }
+
+        &::placeholder{
+          color: #d8d8d8;
+        }
+      }
     }
 
     .form-check {
@@ -83,14 +117,14 @@
         a {
           text-decoration: none;
           margin-left: 0.5rem;
-          color: #1976d2;
+          color: v.$color-primary4;
 
           &:hover {
-            color: v.$color-blue4;
+            color: v.$color-primary;
           }
 
           &:active {
-            color: v.$color-blue1;
+            color: v.$color-primary2;
           }
         }
       }
@@ -162,14 +196,14 @@
     a {
       text-decoration: none;
       margin-left: 0.5rem;
-      color: #1976d2;
+      color: v.$color-primary4;
 
       &:hover {
-        color: v.$color-blue4;
+        color: v.$color-primary;
       }
 
       &:active {
-        color: v.$color-blue1;
+        color: v.$color-primary2;
       }
     }
   }
@@ -177,4 +211,13 @@
 
 .was-validated .form-check-input:invalid ~ .form-check-label, .form-check-input.is-invalid ~ .form-check-label{
   color: #2b2a2a;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
 }

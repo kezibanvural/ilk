@@ -14,7 +14,6 @@ const ContactMessageForm = () => {
     <div className="contact-page-form">
         <div className="text">
         <h1>Contact Us</h1>
-        {/* <p>Please login to continue to your account</p> */}
       </div>
         <form action={dispatch} noValidate>
         <div className="input-group">

@@ -1,15 +1,12 @@
-import DashboardAIChatSection from '@/components/dashboard/chatSection';
-import React from 'react'
-
 export const metadata = {
-    title: "Dashboard",
+    title: "AI Chat",
     description: "Learning Matrix AI Power in Education",
   };
 
 const DashboardPage = () => {
   return (
     <div className='container'>
-      <DashboardAIChatSection/>
+        <p>This page is shown only by admin</p>
     </div>
   )
 }
