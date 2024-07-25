@@ -22,6 +22,7 @@ const config = {
       }
     })
   ],
+  secret: process.env.AUTH_SECRET,
   callbacks: {
     async redirect({ url, baseUrl }) {
       return url.startsWith(baseUrl) ? url : baseUrl;
