@@ -23,7 +23,7 @@ export const config = {
 		},
 	},
 	api: {
-		BASE_URL: "https://api.dev.lkai.app",
+		baseUrl: "https://api.dev.lkai.app",
 	},
 	userRightsOnRoutes: [
 		{urlRegex: /\/chat$/, rights:["student"]},
