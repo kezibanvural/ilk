@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import AttachmentFile from "../../common/attach-file";
+import Dropdown from "../../common/dropdown";
+import FileUploadList from "../fileUploadList";
 
 const ChatInput = ({ onSendMessage, loading }) => {
   const [inputValue, setInputValue] = useState("");
   const textareaRef = useRef(null);
+  const [files, setFiles] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -31,6 +34,8 @@ const ChatInput = ({ onSendMessage, loading }) => {
   }, [inputValue]);
 
   return (
+    <>
+    
     <form
       className="chat-input"
       onSubmit={(e) => {
@@ -39,8 +44,9 @@ const ChatInput = ({ onSendMessage, loading }) => {
         setInputValue("");
       }}
     >
+        <FileUploadList files={files} isLoading={isLoading} setFiles={setFiles} />
       <div className="textarea-container">
-        <AttachmentFile />
+        <Dropdown files={files} setFiles={setFiles} isLoading={isLoading} setIsLoading={setIsLoading} />
         <textarea
           ref={textareaRef}
           style={{ overflow: "hidden" }}
@@ -77,6 +83,7 @@ const ChatInput = ({ onSendMessage, loading }) => {
         double-check before using the information.
       </small>
     </form>
+    </>
   );
 };
 

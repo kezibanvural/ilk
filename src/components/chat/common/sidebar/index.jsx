@@ -8,8 +8,9 @@ import { swalConfirm } from "@/helpers/swal";
 import { signOut } from "next-auth/react";
 import { newChatAction } from "@/actions/chat-action";
 
-
-const ChatSidebar = () => {
+const ChatSidebar = (
+  // {allChatHistoryData}
+) => {
   const [screenWidth, setScreenWidth] = useState(0);
   const [closeSidebar, setCloseSidebar] = useState(true);
 
@@ -27,8 +28,7 @@ const ChatSidebar = () => {
     if (!resp.isConfirmed) return;
 
     signOut({ callbackUrl: "/" });
-};
-
+  };
 
   return (
     <div className="sidebar m-0 p-0">
@@ -40,9 +40,7 @@ const ChatSidebar = () => {
         <span></span>
       </button>
       <div
-        className={
-          closeSidebar ? "chat-sidebar" : "chat-sidebar closed-panel"
-        }
+        className={closeSidebar ? "chat-sidebar" : "chat-sidebar closed-panel"}
       >
         <div className="sidebar-top">
           <button className="new-chat" onClick={newChatAction}>
@@ -122,17 +120,17 @@ const ChatSidebar = () => {
                 >
                   <div className="accordion-body">
                     <ul>
-                      {history.today.map((item) => (
-                        <li key={item.id}>
-                          <div>
+                      {/* {allChatHistoryData.map((item) => (
+                        <li key={item.session_id}>
+                          <Link href={`/chat/${item.session_id}`}>
                             <Image
                               src="/icons/actions/file/State=Default.svg"
                               height={24}
                               width={24}
                               alt="file-icon"
                             />
-                            <span>{item.title}</span>
-                          </div>
+                            <span>{item.first_question}</span>
+                          </Link>
                           <div className="dropdown">
                             <button
                               className="dropdown-toggle"
@@ -149,10 +147,7 @@ const ChatSidebar = () => {
                             </button>
                             <ul className="dropdown-menu">
                               <li>
-                                <Link
-                                  className="dropdown-item"
-                                  href="/chat"
-                                >
+                                <Link className="dropdown-item" href="/chat">
                                   <Image
                                     src="/icons/ui/icons/State=Default,Name=Share.svg"
                                     width={20}
@@ -163,10 +158,7 @@ const ChatSidebar = () => {
                                 </Link>
                               </li>
                               <li>
-                                <Link
-                                  className="dropdown-item"
-                                  href="/chat"
-                                >
+                                <Link className="dropdown-item" href="/chat">
                                   <Image
                                     src="/icons/ui/icons/State=Default,Name=Rename.svg"
                                     width={19}
@@ -177,10 +169,7 @@ const ChatSidebar = () => {
                                 </Link>
                               </li>
                               <li>
-                                <Link
-                                  className="dropdown-item"
-                                  href="/chat"
-                                >
+                                <Link className="dropdown-item" href="/chat">
                                   <Image
                                     src="/icons/ui/icons/State=Default,Name=Archive.svg"
                                     width={20}
@@ -191,10 +180,7 @@ const ChatSidebar = () => {
                                 </Link>
                               </li>
                               <li>
-                                <Link
-                                  className="dropdown-item"
-                                  href="/chat"
-                                >
+                                <Link className="dropdown-item" href="/chat">
                                   <Image
                                     src="/icons/ui/icons/State=Default,Name=Clear.svg"
                                     width={20}
@@ -207,12 +193,12 @@ const ChatSidebar = () => {
                             </ul>
                           </div>
                         </li>
-                      ))}
+                      ))} */}
                     </ul>
                   </div>
                 </div>
               </div>
-              <div className="accordion-item">
+              {/* <div className="accordion-item">
                 <h2 className="accordion-header">
                   <button
                     className="accordion-button collapsed"
@@ -321,7 +307,7 @@ const ChatSidebar = () => {
                     </ul>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
