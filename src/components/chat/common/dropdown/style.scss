@@ -1,0 +1,36 @@
+@use "../../../../styles/variables.scss" as v;
+
+.chat-options-dropup{
+    .dropdown-attach-icon{
+        position: absolute;
+        top: 18px;
+        left: 17px;
+    }
+
+    .dropdown-menu{
+        margin-bottom: 20px!important;
+        background-color: v.$color-primary4 ;
+
+        .dropdown-item{
+            transition: all 0.2s linear;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+
+            &:hover{
+                background-color: v.$color-primary3 !important;
+                // transform: scale(1.05);
+            }
+
+            &:focus{
+                background-color: v.$color-primary2!important;
+            }
+
+            &:active{
+                color: black!important;
+            }
+        }
+        
+    }
+}

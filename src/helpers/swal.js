@@ -32,10 +32,10 @@ export const swalConfirm = (
 	});
 };
 
-export const swalToast = (title, icon = "success") => {
+export const swalToast = (title, icon = "success", relativePosition="top-end") => {
 	const Toast = Swal.mixin({
 		toast: true,
-		position: "top-end",
+		position: relativePosition,
 		showConfirmButton: false,
 		timer: 2500,
 		timerProgressBar: true,
