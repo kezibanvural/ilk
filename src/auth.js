@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { login, refreshTokenService } from "./services/auth-service";
+import { login } from "./services/auth-service";
 import { getIsTokenValid, isUserAuthorized } from "./helpers/auth";
 
 const config = {
