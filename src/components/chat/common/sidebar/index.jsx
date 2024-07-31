@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import "./style.scss";
 import Image from "next/image";
 import history from "./history.json";
-import Link from "next/link";
 import { swalConfirm } from "@/helpers/swal";
 import { signOut } from "next-auth/react";
 import { newChatAction } from "@/actions/chat-action";
+import ChatHistoryAccordion from "./chat-history-accordion";
 
 const ChatSidebar = ({allChatHistoryData}) => {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -97,106 +97,7 @@ const ChatSidebar = ({allChatHistoryData}) => {
 
           <div className={closeSidebar ? "history" : "history d-none"}>
             <h6>Recent Converstaions</h6>
-            <div className="accordion" id="chatHistory">
-              <div className="accordion-item">
-                <h2 className="accordion-header">
-                  <button
-                    className="accordion-button"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne"
-                    aria-expanded="true"
-                    aria-controls="collapseOne"
-                  >
-                    Today
-                  </button>
-                </h2>
-                <div
-                  id="collapseOne"
-                  className="accordion-collapse collapse show"
-                  data-bs-parent="#chatHistory"
-                >
-                  <div className="accordion-body">
-                    <ul>
-                      {allChatHistoryData.map((item) => (
-                        <li key={item.session_id} title={item.first_question}>
-                          <Link href={`/chat/${item.session_id}`}>
-                            <Image
-                              src="/icons/actions/file/State=Default.svg"
-                              height={24}
-                              width={24}
-                              alt="file-icon"
-                            />
-                            <span>{item.first_question}</span>
-                          </Link>
-                          <div className="dropdown">
-                            <button
-                              className="dropdown-toggle"
-                              type="button"
-                              data-bs-toggle="dropdown"
-                              aria-expanded="false"
-                            >
-                              <Image
-                                src="icons/ui/icons/ellipsis-icon.svg"
-                                width={21.6}
-                                height={4.45}
-                                alt="ellipsis-icon"
-                              />
-                            </button>
-                            <ul className="dropdown-menu">
-                              <li>
-                                <Link className="dropdown-item" href="/chat">
-                                  <Image
-                                    src="/icons/ui/icons/State=Default,Name=Share.svg"
-                                    width={20}
-                                    height={20}
-                                    alt="home-icon"
-                                  />
-                                  <span>Share</span>
-                                </Link>
-                              </li>
-                              <li>
-                                <Link className="dropdown-item" href="/chat">
-                                  <Image
-                                    src="/icons/ui/icons/State=Default,Name=Rename.svg"
-                                    width={19}
-                                    height={20}
-                                    alt="book-icon"
-                                  />
-                                  <span>Rename</span>
-                                </Link>
-                              </li>
-                              <li>
-                                <Link className="dropdown-item" href="/chat">
-                                  <Image
-                                    src="/icons/ui/icons/State=Default,Name=Archive.svg"
-                                    width={20}
-                                    height={20}
-                                    alt="user-icon"
-                                  />
-                                  <span>Archive</span>
-                                </Link>
-                              </li>
-                              <li>
-                                <Link className="dropdown-item" href="/chat">
-                                  <Image
-                                    src="/icons/ui/icons/State=Default,Name=Clear.svg"
-                                    width={20}
-                                    height={20}
-                                    alt="user-icon"
-                                  />
-                                  <span>Delete</span>
-                                </Link>
-                              </li>
-                            </ul>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ChatHistoryAccordion allChatHistoryData={allChatHistoryData}/>
           </div>
         </div>
         <div className="sidebar-bottom mb-4">
