@@ -11,7 +11,6 @@ const config = {
       async authorize(credentials) {
         const res = await login(credentials);
         const data = await res.json();
-        console.log("data", data);
         if (!res.ok) return null;
         const payload = {
           user: { ...data },
@@ -20,6 +19,7 @@ const config = {
         };
         delete payload.user.refresh;
         delete payload.user.access;
+        console.log(payload);
         return payload;
       }
     })
