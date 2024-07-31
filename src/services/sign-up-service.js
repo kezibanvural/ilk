@@ -1,6 +1,6 @@
 import { config } from "@/helpers/config";
 
-const REQ_API_URL = process.env.BASE_URL;
+const REQ_API_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const register = (payload) => {
 	return fetch(`${REQ_API_URL}/user/register`, {

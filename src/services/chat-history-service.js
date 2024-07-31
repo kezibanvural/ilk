@@ -1,4 +1,4 @@
-import { getAuthHeader, getAuthHeaderClient } from "@/helpers/auth";
+import { getAuthHeader } from "@/helpers/auth";
 
 const REQ_API_URL = "http://localhost:5008"
 
