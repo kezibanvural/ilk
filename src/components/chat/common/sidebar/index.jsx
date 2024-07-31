@@ -8,9 +8,7 @@ import { swalConfirm } from "@/helpers/swal";
 import { signOut } from "next-auth/react";
 import { newChatAction } from "@/actions/chat-action";
 
-const ChatSidebar = (
-  // {allChatHistoryData}
-) => {
+const ChatSidebar = ({allChatHistoryData}) => {
   const [screenWidth, setScreenWidth] = useState(0);
   const [closeSidebar, setCloseSidebar] = useState(true);
 
@@ -120,8 +118,8 @@ const ChatSidebar = (
                 >
                   <div className="accordion-body">
                     <ul>
-                      {/* {allChatHistoryData.map((item) => (
-                        <li key={item.session_id}>
+                      {allChatHistoryData.map((item) => (
+                        <li key={item.session_id} title={item.first_question}>
                           <Link href={`/chat/${item.session_id}`}>
                             <Image
                               src="/icons/actions/file/State=Default.svg"
@@ -193,121 +191,11 @@ const ChatSidebar = (
                             </ul>
                           </div>
                         </li>
-                      ))} */}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              {/* <div className="accordion-item">
-                <h2 className="accordion-header">
-                  <button
-                    className="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseTwo"
-                    aria-expanded="false"
-                    aria-controls="collapseTwo"
-                  >
-                    Yesterday
-                  </button>
-                </h2>
-                <div
-                  id="collapseTwo"
-                  className="accordion-collapse collapse"
-                  data-bs-parent="#chatHistory"
-                >
-                  <div className="accordion-body">
-                    <ul>
-                      {history.yesterday.map((item) => (
-                        <li key={item.id}>
-                          <div>
-                            <Image
-                              src="/icons/actions/file/State=Default.svg"
-                              height={24}
-                              width={24}
-                              alt="file-icon"
-                            />
-                            <span>{item.title}</span>
-                          </div>
-                          <div className="dropdown">
-                            <button
-                              className="dropdown-toggle"
-                              type="button"
-                              data-bs-toggle="dropdown"
-                              aria-expanded="false"
-                            >
-                              <Image
-                                src="icons/ui/icons/ellipsis-icon.svg"
-                                width={21.6}
-                                height={4.45}
-                                alt="ellipsis-icon"
-                              />
-                            </button>
-                            <ul className="dropdown-menu">
-                              <li>
-                                <Link
-                                  className="dropdown-item"
-                                  href="/chat"
-                                >
-                                  <Image
-                                    src="/icons/ui/icons/State=Default,Name=Share.svg"
-                                    width={20}
-                                    height={20}
-                                    alt="home-icon"
-                                  />
-                                  <span>Share</span>
-                                </Link>
-                              </li>
-                              <li>
-                                <Link
-                                  className="dropdown-item"
-                                  href="/chat"
-                                >
-                                  <Image
-                                    src="/icons/ui/icons/State=Default,Name=Rename.svg"
-                                    width={19}
-                                    height={20}
-                                    alt="book-icon"
-                                  />
-                                  <span>Rename</span>
-                                </Link>
-                              </li>
-                              <li>
-                                <Link
-                                  className="dropdown-item"
-                                  href="/chat"
-                                >
-                                  <Image
-                                    src="/icons/ui/icons/State=Default,Name=Archive.svg"
-                                    width={20}
-                                    height={20}
-                                    alt="user-icon"
-                                  />
-                                  <span>Archive</span>
-                                </Link>
-                              </li>
-                              <li>
-                                <Link
-                                  className="dropdown-item"
-                                  href="/chat"
-                                >
-                                  <Image
-                                    src="/icons/ui/icons/State=Default,Name=Clear.svg"
-                                    width={20}
-                                    height={20}
-                                    alt="user-icon"
-                                  />
-                                  <span>Delete</span>
-                                </Link>
-                              </li>
-                            </ul>
-                          </div>
-                        </li>
                       ))}
                     </ul>
                   </div>
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
