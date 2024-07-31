@@ -25,6 +25,27 @@ export const getAuthHeaderClient = async () => {
 
     return authHeader;
 };
+export const getAuthHeaderById = async (session_id="") => {
+
+    let authHeader = { "Content-Type": "application/json" };
+    const session = await getSession();
+    const user_id = parseJwt(session?.accessToken).user_id;
+
+    session_id ? (
+        authHeader ={
+        "Content-Type": "application/json", 
+        "user-id":user_id,
+        "session-id":session_id
+    }) : (
+        authHeader = { 
+            "Content-Type": "application/json", 
+            "user-id":user_id 
+        }
+    )
+
+
+    return authHeader;
+};
 
 export const isUserAuthorized = (role, url) => {
     const menu = config.userRightsOnRoutes.find((item) =>
