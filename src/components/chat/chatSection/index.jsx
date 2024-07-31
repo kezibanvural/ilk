@@ -13,8 +13,8 @@ const ChatAIChatSection =({session}) => {
   const [apiData, setApiData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const REQ_API_URL = process.env.BASE_URL;
-  console.log(REQ_API_URL);
+  const REQ_API_URL = process.env.NEXT_PUBLIC_BASE_URL;
+  console.log("REQ_API_URL",REQ_API_URL);
 
   const handleChat = async (inputValue) => {
     if (!inputValue) return;

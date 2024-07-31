@@ -4,6 +4,8 @@ import { login } from "./services/auth-service";
 import { getIsTokenValid, isUserAuthorized } from "./helpers/auth";
 
 const config = {
+  trustHost: true,
+  trustHostedDomain: true,
   providers: [
     Credentials({
       async authorize(credentials) {
