@@ -13,7 +13,7 @@ export const metadata = {
   
   export default async function ChatLayout({ children }) {
     const session = await auth();
-    const user_id = parseJwt(session?.accessToken).user_id;
+    const user_id = parseJwt(session?.accessToken)?.user_id;
 
     const allChatHistoryRes = await getAllChatHistory(user_id);
     const allChatHistoryData = await allChatHistoryRes.json();
