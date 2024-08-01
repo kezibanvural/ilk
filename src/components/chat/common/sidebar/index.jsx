@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import "./style.scss";
 import Image from "next/image";
-import history from "./history.json";
 import { swalConfirm } from "@/helpers/swal";
 import { signOut } from "next-auth/react";
 import { newChatAction } from "@/actions/chat-action";
